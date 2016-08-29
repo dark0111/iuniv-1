@@ -1,0 +1,35 @@
+BODY {scrollbar-face-color: #F2F2F2;
+scrollbar-shadow-color: #999999;
+scrollbar-highlight-color: #FFFFFF;
+scrollbar-3dlight-color: #999999;
+scrollbar-darkshadow-color: #FFFFFF;
+scrollbar-track-color: #FFFFFF;
+scrollbar-arrow-color: #999999}
+
+form {margin:0; color: #5E5E5D;FONT-FAMILY:µ¸¿ò, arial; FONT-SIZE: 9pt;;letter-spacing:-0.02em; text-decoration:none;line-height:12pt;}
+
+A:link {color:#666666; text-decoration:none; font-size:9pt;}
+A:visited {color:#666666; text-decoration:none; font-size:9pt;}
+A:active {color:#4169e1; text-decoration:none; font-size:9pt;}
+A:hover {color:#3333FF; text-decoration:underline; font-size:9pt;}
+.img(border:0;)
+
+font {font-family:µ¸¿ò; font-size:9pt; line-height:18px;}
+.b { font-size:8pt  ; line-height: 14px ; font-face:±¼¸²;}
+.text01 { font-family: "µ¸¿òÃ¼"; font-size: 9pt; color: #FFFFFF; line-height: 14pt; font-weight:bold; letter-spacing:-1pt;}
+.numbersjackpot { font-family: "µ¸¿òÃ¼"; font-size: 21pt; color: #FFFFFF; line-height: 22pt; font-weight:bold; letter-spacing:-1pt;}
+.size {font-family:µ¸¿ò; font-size:12pt; line-height:18px; font-weight:bold;}
+.s {font-family:µ¸¿ò; font-size:8pt; line-height:15px;}
+.size_ {font-family:µ¸¿ò; font-size:11pt; line-height:18px; font-weight:bold;}
+.ten {font-family:µ¸¿ò; font-size:10pt; line-height:18px; font-weight:bold;}
+
+.support {font-family:µ¸¿ò; font-size:9pt; line-height:15px;}
+
+
+
+.sample {  background-color: #E8F0FC; border-color: #798EAE 798EAE 798EAE 798EAE; border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px}
+
+a.blue:link {color:#1e90ff; text-decoration:none; font-size:10pt;}
+a.blue:visited {color:#1e90ff; text-decoration:none; font-size:10pt;}
+a.blue:active {color:#1e90ff; text-decoration:none; font-size:10pt;}
+a.blue:hover {color:#4169e1; text-decoration:underline; font-size:10pt;}

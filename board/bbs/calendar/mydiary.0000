@@ -1,0 +1,46 @@
+2007년 스케쥴스킨에서 불러쓰는 달력 내용, r=빨, b=파, y=갈 8자리 날짜와 공백없이 내용 입력, 내용은 15자이내, 중복내용 있는지 검토
+r20070101신정
+b20070214발렌타인데이
+r20070301<img src=../skin/board/schedule_i/img/bull_a.gif align=absmiddle> 삼일절
+b20070314화이트데이
+b20070405식목일
+b20070419419
+r20070501근로자의날
+r20070505어린이날
+b20070508어버이날
+b20070515스승의날
+b20070518518기념일
+r20070606<img src=../skin/board/schedule_i/img/bull_a.gif align=absmiddle> 현충일
+b20070625625사변일
+b20070717<img src=../skin/board/schedule_i/img/bull_a.gif align=absmiddle> 제헌절
+r20070815<img src=../skin/board/schedule_i/img/bull_a.gif align=absmiddle> 광복절
+b20071001국군의날
+r20071003<img src=../skin/board/schedule_i/img/bull_a.gif align=absmiddle> 개천절
+b20071009한글날
+b20081126김장시즌
+r20071225성탄절
+
+b20070701<img src=../skin/board/schedule_i/img/bull_13.gif align=absmiddle> 누나
+b20070304<img src=../skin/board/schedule_i/img/bull_13.gif align=absmiddle> 처남
+b20070405<img src=../skin/board/schedule_i/img/bull_13.gif align=absmiddle> 결혼기념
+b20070306<img src=../skin/board/schedule_i/img/bull_13.gif align=absmiddle> 은찬
+b20070415<img src=../skin/board/schedule_i/img/bull_13.gif align=absmiddle> 승현
+b20070422<img src=../skin/board/schedule_i/img/bull_13.gif align=absmiddle> 마이
+b20070324<img src=../skin/board/schedule_i/img/bull_13.gif align=absmiddle> 재윤
+
+
+#이유는 모르겠지만 공백라인이 하나 필요하네요.
+
+/*
+누나	생일		2006	7	1
+처남	생일		2006	3	4
+결혼기념	결혼기념		2006	4	5
+은찬	생일		2006	3	6
+승현	생일		2006	4	15
+혜진	생일		2006	4	21
+부부의날	생일		2006	5	21
+나	생일		2006	4	22
+김선영	생일		2006	5	23
+재윤	생일		2006	3	24
+첫만남	생일		2002	5	31
+*/

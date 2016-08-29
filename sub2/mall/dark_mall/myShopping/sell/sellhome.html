@@ -1,0 +1,245 @@
+<?
+session_start();
+IF($HTTP_SESSION_VARS[ON_ID] AND $HTTP_SESSION_VARS[ON_NAME] AND $HTTP_SESSION_VARS[ON_EMAIL]) {
+include "../../include/dbcon.php";
+$CATEVALUE = "<a href=\"/\" class='user_category_value'>홈</a> > <a href=\"/myShopping/myShop.html\" class='user_category_value'>나의쇼핑정보</a>";
+$CATEVALUE .= " > ".$HTTP_SESSION_VARS[ON_NAME]."님의 판매상품 홈 ";
+
+$MemberLoadQuery = "select * from $memberSQL where id='$HTTP_SESSION_VARS[ON_ID]'";
+$MemberLoadSQL = mysql_query($MemberLoadQuery, $connection) or die("MemberLoadQuery error");
+$MemberLoadFetch = mysql_fetch_array($MemberLoadSQL);
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title><?=$HTTP_SESSION_VARS[ON_NAME]?>의 판매상품 홈</title>
+	<link rel="STYLESHEET" type="text/css" href="../../style/style.css">
+</head>
+<body>
+<?
+include "../../template/head.php";
+?>
+<table border=0 cellpadding=0 cellspacing=0 width=900 align=center>
+<tr>
+<td bgcolor="#ffffff">
+	<table broder=0 cellpadding=0 cellspacing=0 width=100%>
+	<tr>
+	<td bgcolor="#ffffff" class="user_category_value"><?=$CATEVALUE;?></td>
+	</tr>
+
+	<tr><td height=5 bgcolor="#ffffff"></td></tr>
+	<tr><td height=1 bgcolor="#eeeeee"></td></tr>
+	<tr><td height=5 bgcolor="#ffffff"></td></tr>
+
+	<tr>
+	<td bgcolor="#ffffff" width="900" align=center>
+
+		<!-- 상품등록 <시작>-->
+		<table border=0 cellpadding=3 cellspacing=1 bgcolor="#c4c4c4" width=900>
+		<tr>
+		<td width=150 bgcolor="#eeeeee" align=center rowspan=4>상품등록</td>
+		<td width=250 bgcolor="#ffffff" align=center>
+		<a href="./sellpdt/sellpdt.html">내 상품 팔기</a>
+		</td>
+		<td width=500 bgcolor="#ffffff"></td>
+		</tr>
+
+		<tr>
+		<td width=250 bgcolor="#ffffff" align=center>
+
+			<?
+			$LoadWaitProductQuery = "select count(no) as no from $productSQL where user_type='0' and company_code='$HTTP_SESSION_VARS[ON_ID]'";
+			$LoadWaitProductSQL = mysql_query($LoadWaitProductQuery, $connection) or die("LoadWaitProductQuery error");
+			$LoadWaitProductFetch = mysql_fetch_array($LoadWaitProductSQL);
+			?>
+
+			<table border=0 cellpadding=0 cellspacing=0>
+			<tr>
+			<td><a href="./waitpdt/waitpdt.php">등록대기 상품</a></td>
+			<td class="user_product_search_value">(<?=$LoadWaitProductFetch[0]?>)</td>
+			</tr>
+			</table>
+		
+		</td>
+		<td width=500 bgcolor="#ffffff"></td>
+		</tr>
+
+		<tr>
+		<td width=250 bgcolor="#ffffff" align=center>
+
+			<?
+			$LoadWaitProductQuery = "select count(no) as no from $productSQL where user_type='1' and company_code='$HTTP_SESSION_VARS[ON_ID]'";
+			$LoadWaitProductSQL = mysql_query($LoadWaitProductQuery, $connection) or die("LoadWaitProductQuery error");
+			$LoadWaitProductFetch = mysql_fetch_array($LoadWaitProductSQL);
+			?>
+
+			<table border=0 cellpadding=0 cellspacing=0>
+			<tr>
+			<td><a href="./outpdt/outpdt.php"><span class="outpdt">등록보류 상품</span></a></td>
+			<td class="user_product_search_value">(<?=$LoadWaitProductFetch[0]?>)</td>
+			</tr>
+			</table>
+		
+		</td>
+		<td width=500 bgcolor="#ffffff"></td>
+		</tr>
+
+		<tr>
+		<td width=250 bgcolor="#ffffff" align=center>
+
+			<?
+			$ShowProductQuery = "select count(no) as no from $productSQL where user_type='2' and company_code='$HTTP_SESSION_VARS[ON_ID]'";
+			$ShowProductSQL = mysql_query($ShowProductQuery, $connection) or die("LoadWaitProductQuery error");
+			$ShowProductFetch = mysql_fetch_array($ShowProductSQL);
+			?>
+
+			<table border=0 cellpadding=0 cellspacing=0>
+			<tr>
+			<td><a href="./showpdt/showpdt.php">진열중인 상품</a></td>
+			<td class="user_product_search_value">(<?=$ShowProductFetch[0]?>)</td>
+			</tr>
+			</table>
+
+		</td>
+		<td width=500 bgcolor="#ffffff">
+		</td>
+		</tr>
+
+		</table>
+		<!-- 상품등록 <종료>-->
+
+		<br>
+		<table border=0 cellpadding=3 cellspacing=1 bgcolor="#c4c4c4" width=900>
+		<tr>
+		<td width=900 bgcolor="#eeeeee">판매진행</td>
+		</tr>
+		</table>
+		
+		<br>
+		<table border=0 cellpadding=0 cellspacing=0 align=center>
+		<tr>
+		<!-- 입금확인중인 상품 <시작>-->
+		<td background="../../image/myshopping/sell/step.gif" width="145" height="100" valign=top align=center>
+			<table border=0 cellpadding=0 cellspacing=0 width=125>
+			<tr><td height=30 style="padding:3 0 0 0">입금확인중 상품</td></tr>
+			<tr><td height=70 valign=top></td></tr>
+			</table>
+		</td>
+		<!-- 입금확인중인 상품 <종료>-->
+		<td align=center width=35><img src="../../image/myshopping/sell/right.gif" width="25" height="25" border="0"></td>
+
+		<!-- 발송요청 <시작>-->
+		<td background="../../image/myshopping/sell/step.gif" width="145" height="100" valign=top align=center>
+			<table border=0 cellpadding=0 cellspacing=0 width=125>
+			<tr><td height=30 style="padding:3 0 0 0">발송요청</td></tr>
+			<tr><td height=70 valign=top></td></tr>
+			</table>
+		</td>
+		<!-- 발송요청 <종료>-->
+
+		<td align=center width=35><img src="../../image/myshopping/sell/right.gif" width="25" height="25" border="0"></td>
+
+		<!-- 상품 배송중 <시작>-->
+		<td background="../../image/myshopping/sell/step.gif" width="145" height="100" valign=top align=center>
+			<table border=0 cellpadding=0 cellspacing=0 width=125>
+			<tr><td height=30 style="padding:3 0 0 0">상품 배송중</td></tr>
+			<tr><td height=70 valign=top></td></tr>
+			</table>
+		</td>
+		<!-- 상품 배송중 <종료>-->
+
+		<td align=center width=35><img src="../../image/myshopping/sell/right.gif" width="25" height="25" border="0"></td>
+
+		<!-- 송금예정 <시작>-->
+		<td background="../../image/myshopping/sell/step.gif" width="145" height="100" valign=top align=center>
+			<table border=0 cellpadding=0 cellspacing=0 width=125>
+			<tr><td height=30 style="padding:3 0 0 0">송금예정</td></tr>
+			<tr><td height=70 valign=top></td></tr>
+			</table>
+		</td>
+		<!-- 송금예정 <종료>-->
+
+		<td align=center width=35><img src="../../image/myshopping/sell/right.gif" width="25" height="25" border="0"></td>
+
+		<!-- 송금완료 <시작>-->
+		<td background="../../image/myshopping/sell/step.gif" width="145" height="100" valign=top align=center>
+			<table border=0 cellpadding=0 cellspacing=0 width=125>
+			<tr><td height=30 style="padding:3 0 0 0">송금완료</td></tr>
+			<tr><td height=70 valign=top></td></tr>
+			</table>
+		</td>
+		<!-- 송금완료 <종료>-->
+
+		</tr>
+		</table>
+		<br>
+		
+		<!-- 반품교환취소 <시작>-->
+		<table border=0 cellpadding=3 cellspacing=1 bgcolor="#c4c4c4" width=900>
+		<tr>
+		<td width=150 bgcolor="#eeeeee" align=center rowspan=4>반품,교환,취소</td>
+		<td width=250 bgcolor="#ffffff" align=center>반품관리</td>
+		<td width=500 bgcolor="#ffffff"></td>
+		</tr>
+
+		<tr>
+		<td width=250 bgcolor="#ffffff" align=center>교환관리</td>
+		<td width=500 bgcolor="#ffffff"></td>
+		</tr>
+
+		<tr>
+		<td width=250 bgcolor="#ffffff" align=center>취소관리</td>
+		<td width=500 bgcolor="#ffffff"></td>
+		</tr>
+
+		</table>
+		<!-- 반품교환취소 <종료>-->
+
+		<br>
+		
+		<!-- 정산관리 <시작>-->
+		<table border=0 cellpadding=3 cellspacing=1 bgcolor="#c4c4c4" width=900>
+		<tr>
+		<td width=150 bgcolor="#eeeeee" align=center rowspan=3>정산</td>
+		<td width=250 bgcolor="#ffffff" align=center>송금내역</td>
+		<td width=500 bgcolor="#ffffff"></td>
+		</tr>
+
+		<tr>
+		<td width=250 bgcolor="#ffffff" align=center>부가서비스</td>
+		<td width=500 bgcolor="#ffffff"></td>
+		</tr>
+
+		<tr>
+		<td width=250 bgcolor="#ffffff" align=center>세금계산서</td>
+		<td width=500 bgcolor="#ffffff"></td>
+		</tr>
+
+		</table>
+		<!-- 정산관리 <종료>-->
+
+
+	</td>
+	</tr>
+	</table>
+
+</td></tr>
+</table>	
+
+<?
+include "../../template/footer.php";
+?>
+</body>
+</html>
+
+<?
+} ELSE {
+?>
+<script language="javascript">
+parent.location.href="/";
+</script>
+<?
+}
+mysql_close($connection);
+?>

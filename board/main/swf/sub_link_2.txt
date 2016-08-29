@@ -1,0 +1,8 @@
+&subLink20=board/bbs/board.php?bo_table=board1
+&subLink21=board/bbs/board.php?bo_table=notice
+&subLink22=board/bbs/board.php?bo_table=gallery
+&subLink23=board/bbs/board.php?bo_table=add
+&subLink24=board/bbs/board.php?bo_table=market
+&subLink25=s
+&subLink26=s
+&loadok=ok

@@ -1,0 +1,26 @@
+cameras {
+      width:500px;
+      border:1px solid red;
+      text-align:center;
+}
+
+camera {
+      width:400px;
+      border:1px solid gray;
+      background-color:yellow;
+}
+
+model_id {
+      font-size:12pt;
+      font-weight:bold;
+}
+
+author {
+       color:blue;
+       font-size:10pt;
+}
+
+price {
+       color:red;
+       font-size:10pt;
+}

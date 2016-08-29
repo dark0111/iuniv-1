@@ -1,0 +1,8 @@
+&subLink30=board/bbs/board.php?bo_table=life
+&subLink31=board/bbs/board.php?bo_table=class
+&subLink32=board/bbs/board.php?bo_table=class_data
+&subLink33=board/bbs/board.php?bo_table=schedule
+&subLink34=board/bbs/board.php?bo_table=study
+&subLink35=board/bbs/board.php?bo_table=alba
+&subLink36=
+&loadok=ok

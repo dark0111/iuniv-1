@@ -1,0 +1,119 @@
+<!-- saved from url=(0014)about:internet -->
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style>
+body { margin: 0px; overflow:hidden }
+</style>
+
+<!--(1) 이부분은 꼭 넣으셔야 -->
+<script src="AC_OETags.js" language="javascript"></script>
+<script language="JavaScript" type="text/javascript">
+<!--
+// -----------------------------------------------------------------------------
+// Globals
+// Major version of Flash required
+var requiredMajorVersion = 9;
+// Minor version of Flash required
+var requiredMinorVersion = 0;
+// Minor version of Flash required
+var requiredRevision = 0;
+// -----------------------------------------------------------------------------
+// -->
+</script>
+<!--(1)이부분은 꼭 넣으셔야 -->
+
+</head>
+
+<body scroll="no">
+<!--(2)이부분은 꼭 넣으셔야 -->
+<script language="JavaScript" type="text/javascript" src="history.js"></script>
+
+<!--(3)이부분은 꼭 넣으셔야 <이부분을 플래쉬 삽입할 테이블이나 div등에 넣어주세요>-->
+
+<script language="JavaScript" type="text/javascript">
+<!--
+//겔러리 기본 설정 
+var color='000000'; // 그라디언트 첫번째 칼라
+var color2='000000'; // 그라디언트 두번째 칼라
+var alpa='100'; // 그라디언트 첫번째 색 알파값
+var alpa2='100'; // 그라디언트 두번째 색 알파값 100
+var wd='650'; //무비 가로 //아래의 플래쉬 블러오는 태그의 외곽 테이블 사이즈와 같으면 됩니다.아래 참조..
+var ht='500'; //무비 세로 //이하 동문
+var seescroll="no"; // 겔러리 하단부  스크롤 보일지 여부 yes/no
+var targeted="yes-800-550-150-150"; // 타이틀 클릭시 이동될 주소의 클릭시 새창으로 열것인지 yes / no 
+					//yes OR no/width/height/top/left  새창 설정 
+var charset=""; // 비워둠..
+
+//이곳은 예의상 남겨주십시요...^^
+var copywhere ="- 홈페이지 전문 제작 freekan.co.kr - 감사합니다. ";
+// Version check for the Flash Player that has the ability to start Player Product Install (6.0r65)
+var hasProductInstall = DetectFlashVer(6, 0, 65);
+
+// Version check based upon the values defined in globals
+var hasRequestedVersion = DetectFlashVer(requiredMajorVersion, requiredMinorVersion, requiredRevision);
+
+
+// Check to see if a player with Flash Product Install is available and the version does not meet the requirements for playback
+if ( hasProductInstall && !hasRequestedVersion ) {
+	// MMdoctitle is the stored document.title value used by the installation process to close the window that started the process
+	// This is necessary in order to close browser windows that are still utilizing the older version of the player after installation has completed
+	// DO NOT MODIFY THE FOLLOWING FOUR LINES
+	// Location visited after installation is complete if installation is required
+	var MMPlayerType = (isIE == true) ? "ActiveX" : "PlugIn";
+	var MMredirectURL = window.location;
+    document.title = document.title.slice(0, 47) + " - Flash Player Installation";
+    var MMdoctitle = document.title;
+
+	AC_FL_RunContent(
+		"src", "playerProductInstall",
+		"FlashVars", "MMredirectURL="+MMredirectURL+'&MMplayerType='+MMPlayerType+'&MMdoctitle='+MMdoctitle+"",
+		"width", "100%",
+		"height", "100%",
+		"align", "middle",
+		"id", "gallery",
+		"quality", "high",
+		"bgcolor", "#869ca7",
+		"name", "gallery",
+		"allowScriptAccess","sameDomain",
+		"type", "application/x-shockwave-flash",
+		"pluginspage", "http://www.adobe.com/go/getflashplayer"
+	);
+} else if (hasRequestedVersion) {
+	// if we've detected an acceptable version
+	// embed the Flash Content SWF when all tests are passed
+	
+	AC_FL_RunContent(
+			"src", "gallery",
+			"width", wd,
+			"height", ht,
+			"align", "middle",
+			"id", "gallery",
+			"quality", "high",
+			"bgcolor", "#869ca7",
+			"name", "gallery",
+			"flashvars",'historyUrl=history.htm%3F&lconid=' + lc_id + '&color='+color +'&color2='+color2 +'&alpa='+alpa +'&alpa2='+alpa2+ '&seescroll='+seescroll+'&copywhere='+copywhere+'&wd='+wd+'&ht='+ht+'&targeted='+targeted+'&charset='+charset+' ',
+			"allowScriptAccess","sameDomain",
+			"type", "application/x-shockwave-flash",
+			"pluginspage", "http://www.adobe.com/go/getflashplayer"
+	);
+	
+  } else {  // flash is too old or we can't detect the plugin
+    var alternateContent = 'Alternate HTML content should be placed here. '
+  	+ 'This content requires the Adobe Flash Player. '
+   	+ '<a href=http://www.adobe.com/go/getflash/>Get Flash</a>';
+    document.write(alternateContent);  // insert non-flash content
+  }
+// -->
+</script>
+<!--(2)이부분은 꼭 넣으셔야 -->
+
+
+<!--(3)이부분은 꼭 넣으셔야 -->
+<iframe name="_history" src="history.htm" frameborder="0" scrolling="no" width="22" height="0"></iframe>
+<!--(3)이부분은 꼭 넣으셔야 -->
+
+
+</body>
+</html>

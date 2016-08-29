@@ -1,0 +1,618 @@
+/******************************************IUNIV TOOL **************************/
+#scroll {
+position:relative;
+height:390px;
+overflow:hidden;
+border:0px solid #ddd;
+width:519px;
+-moz-border-radius:5px;
+-webkit-border-radius:5px;
+}
+#tools {
+width:9999em;
+position:absolute;
+}
+.tool {
+float:left;
+width:519px;
+height:315px;
+background-repeat:no-repeat;
+padding:0px 90px 0px 0px;
+margin:0px 50px 0px 0px;
+}
+#details {
+/*background-color:#fff;*/
+color:#666;
+float:left;
+font-size:20px;
+margin:150px 0px 0px 0px;
+padding:10px 10px;
+width:100px;
+}
+.demos {
+left:10px;
+top:10px;
+margin:0px 0px 0px 0px;
+border-left:1px solid #ddd;
+min-height:15px;
+padding:0 25px;
+width:102px;
+}
+.demos h2 {
+color:#065598;
+font-size:22px;
+display:block;
+padding:10px 0;
+}
+.demos a {
+color:#666;
+font-size:12px;
+text-decoration:none;
+}
+.demos p {
+margin:0 0 4px;
+background:transparent url(./img/tools/bullet.png) no-repeat scroll 0 2px;
+padding:2px 0 1px 22px;
+}
+#thumbs {
+background:url(./img/tools/tools-navi.jpg) no-repeat;
+height:90px;
+position:absolute;
+top:315px;
+width:530px;
+left:-2px;
+}
+.t a {
+background:transparent url(./img/tools/tools-navi.jpg) no-repeat scroll -10px -90px;
+margin-left:11px;
+display:block;
+width:91px;
+float:left;
+height:91px;
+cursor:pointer;
+}
+.t a.active {
+cursor:default !important;
+}
+.navi {
+margin-left:90px;
+}
+/* CSS sprite for the navigation */
+#t0 		  { margin-left:10px; _margin-left:10px;}
+#t0.active { background-position:-10px 0 !important; }
+#t0:hover  { background-position:-10px -180px; }
+#t0:active { background-position:-10px -270px; }
+
+#t1			{ background-position:-113px -90px; }
+#t1:hover 	{ background-position:-113px -180px; }
+#t1:active	{ background-position:-113px -270px; }
+#t1.active	{ background-position:-113px 0 !important; }
+#t2			{ background-position:-214px -90px; }
+#t2:hover 	{ background-position:-214px -180px; }
+#t2:active	{ background-position:-214px -270px; }
+#t2.active	{ background-position:-214px 0 !important; }
+#t3			{ background-position:-317px -90px; }
+#t3:hover 	{ background-position:-317px -180px; }
+#t3:active	{ background-position:-317px -270px; }
+#t3.active	{ background-position:-317px 0 !important; }
+#t4			{ background-position:-418px -90px; }
+#t4:hover 	{ background-position:-418px -180px; }
+#t4:active	{ background-position:-418px -270px; }
+#t4.active	{ background-position:-418px 0 !important; }
+
+/******************************************IUNIV TOOL 끝**************************/
+/******************************************iphone 사용법 및 팝업 오버레이 **************************/
+/* the overlayed element */
+.simple_overlay {
+	
+	/* must be initially hidden */
+	display:none;
+	
+	/* place overlay on top of other elements */
+	z-index:10000;
+	
+	/* styling */
+	background-color:#333;
+	width:575px;	
+	min-height:200px;
+	border:0px solid #666;
+	
+	/* CSS3 styling for latest browsers */
+	-moz-box-shadow:0 0 90px 5px #000;
+	-webkit-box-shadow: 0 0 90px #000;	
+}
+
+/* close button positioned on upper right corner */
+.simple_overlay .close {
+	background-image:url(./img/close.png);
+	position:absolute;
+	right:-15px;
+	top:-15px;
+	cursor:pointer;
+	height:35px;
+	width:35px;
+}
+
+ 
+ 
+/* styling for elements inside overlay */
+.simple_overlay .details {
+	position:absolute;
+	top:15px;
+	right:15px;
+	font-size:11px;
+	color:#fff;
+	width:150px;
+}
+ 
+.simple_overlay .details h3 {
+	color:#aba;
+	font-size:12px;
+	font-weight: bold;
+	margin:20 0 -10px 0;
+}
+
+#iphone_flash {
+	width:384px;
+	height:724px;
+	background-image:url(./img/iphone_bg.jpg);
+	text-align:center;
+	cursor:pointer;
+}
+ 
+#iphone_flash img {
+	margin-top:110px;
+}
+
+#talk_write {
+	width:500px;
+	height:400px;
+}
+/******************************************iphone 사용법 및 팝업 오버레이 끝**************************/
+/******************************************tools 추천주거********************************************/
+
+/* container for slides */
+.tools_com_house {
+	background:#fff url(./img/tools/h320.png) repeat-x;
+	border:0px solid #666;
+	position:relative;
+	height:320px;
+	padding:0px 0px 0px 0px;
+	width:520px;
+	float:left;	
+	margin:0px;
+	cursor:pointer;
+	
+	/* CSS3 tweaks for modern browsers */
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-box-shadow:0 0 25px #666;
+	-webkit-box-shadow:0 0 25px #666;	
+}
+
+/* single slide */
+.tools_com_house div {
+	display:none;
+	position:absolute;
+	top:0;
+	left:0;		
+	margin:0px;
+	padding:0px 10px 0px 10px;
+	height:320px;
+	font-size:12px;
+}
+
+/* header */
+.tools_com_house h3 {
+	font-size:22px;
+	font-weight: bold;
+	margin:5px 0px 0px 5px;
+	color:#456;
+}
+
+/* tabs (those little circles below slides) */
+.tools_com_house_tabs {
+	clear:both;
+	margin-left:239px;
+	position:relative;
+	top:-30px;
+}
+
+/* single tab */
+.tools_com_house_tabs a {
+	width:8px;
+	height:8px;
+	float:left;
+	margin:3px;
+	background:url(./img/tools/navigator.png) 0 0 no-repeat;
+	display:block;
+	font-size:1px;		
+}
+
+/* mouseover state */
+.tools_com_house_tabs a:hover {
+	background-position:0 -8px;      
+}
+
+/* active state (current page state) */
+.tools_com_house_tabs a.current {
+	background-position:0 -16px;     
+} 	
+
+.tools_com_house_button{
+	position:relative;
+	top:-70px;
+	left:225px;
+}
+/******************************************tools 추천주거 끝********************************************/
+/******************************************tools 배달메뉴********************************************/
+/*********** navigator ***********/
+/* position and dimensions of the navigator */
+div.tools_menu_navi {
+	margin-left:0px;
+	width:300px;
+	height:5px;
+}
+
+/* items inside navigator */
+div.tools_menu_navi a {
+	width:8px;
+	height:8px;
+	float:left;
+	margin:3px;
+	background:url(./img/tools/navigator.png) 0 0 no-repeat;
+	display:block;
+	font-size:1px;
+}
+
+/* mouseover state */
+div.tools_menu_navi a:hover {
+	background-position:0 -8px;      
+}
+
+/* active state (current page state) */
+div.tools_menu_navi a.active {
+	background-position:0 -16px;     
+} 
+/* main vertical scroll */
+#tools_menu_main {
+	position:relative;
+	overflow:hidden;
+	height:320px;
+	padding:0px 0px 0px 0px;
+	margin:0px 0px 0px 0px;
+	top:0px;
+}
+ 
+/* root element for pages */
+#tools_menu_pages {
+	position:absolute;
+	height:20000em;
+	left:0px;
+}
+ 
+/* single page */
+.tools_menu_page {
+	padding:0px 0px 0px 0px;
+	height:330px;
+	background:#eeeeee /*url(./img/tools/h320.png) 0 0 repeat-x*/;
+	width:520px;
+}
+ 
+/* root element for horizontal scrollables */
+.tools_menu_scrollable {
+	font-weight: bold;
+	overflow:hidden;
+	width: 440px;
+	height:330px;
+}
+ 
+/* root element for scrollable items */
+.tools_menu_scrollable .tools_menu_items {
+	width:20000em;
+	position:absolute;
+	clear:both;
+}
+ 
+/* single scrollable item */
+.tools_menu_item {
+	float:left;
+	cursor:pointer;
+	width:420px;
+	height:320px;
+	padding:0px 10px 10px 10px;
+}
+
+.menu_box {                    /*메뉴박스*/
+	width:184px; 
+	height:85px; 
+	float:left; 
+	border:1px solid #dddddd;
+	padding:5px 5px 5px 5px;
+}
+.menu_text_box {                    /*메뉴박스text*/
+	width:172px; 
+	height:72px; 
+	float:left; 
+	background:url(./img/tools/menu_food_box_gra2.png) 0 0 repeat-x;
+	border:1px solid #ffffff;
+	padding:5px 5px 5px 5px;
+}
+.menu_text_box h1{
+	font-size:12px;
+	font-weight: bold;
+	margin:0px 0px 0px 0px;
+	color:#666666;
+}
+.menu_text_box h2{
+	font-size:15px;
+	font-weight: bold;
+	margin:0px 0px 0px 0px;
+	color:#910202;
+}
+.menu_text_box h3{
+	font-size:11px;
+	font-weight: bold;
+	margin:0px 0px 0px 0px;
+	color:#555555;
+}
+.menu_text_box span{
+	font-size:10px;
+	font-weight: bold;
+	color:#555555;
+	float:right; 
+	padding:0px 3px 0px 3px;
+	border:1px solid #666666;
+	background-color:#eeeeee;
+}
+/* main navigator */
+#tools_menu_main_navi {
+	float:left;
+	padding:0px 0px 0px 0px;
+	margin:0px 0px 0px 0px;
+}
+ 
+#tools_menu_main_navi li {
+	border-top:0px solid #666;
+	clear:both;
+	font-size:12px;
+	height:20px;	
+	width:100px;
+	list-style-type:none;
+	padding:12px 0px 12px 10px;
+	margin:0px 0px 0px 0px;
+	cursor:pointer;
+}
+ 
+#tools_menu_main_navi li:hover {
+	background-color:#dddddd;
+}
+ 
+#tools_menu_main_navi li.active {
+	background-color:#bbbbbb;
+}
+ 
+#tools_menu_main_navi img {
+	float:left;
+	margin:0px 0px 0px 0px;
+}
+ 
+#tools_menu_main_navi strong {
+	display:block;
+}
+ 
+#tools_menu_main div.tools_menu_navi {
+	margin-left:186px;
+	cursor:pointer;
+}
+/******************************************tools 배달메뉴 끝********************************************/
+.talk_vertical {  
+	
+	/* required settings */
+	position:relative;
+	overflow:hidden;	
+	background:#f6f6f6;
+	/* vertical scrollers have typically larger height than width */	
+	height: 313px;	 
+	width: 520px;
+	padding:0px 0px 0px 0px;
+	cursor:n-resize;
+	
+}
+/* root element for scrollable items */
+.talk_items {	
+	position:relative;
+	overflow:hidden;	
+	/* this time we have very large space for height */	
+	height:20000em;	
+	margin:0px 0px 0px 0px;
+	padding:0px 0px 0px 0px;
+	z-index:50;
+}
+ 
+/* single scrollable item */
+.talk_items div {
+	margin:0px 0px 0px 0px;
+	padding:0px 0px 0px 0px;
+	font-size:12px;
+	height:313px;
+}
+.user_icon{
+	position:absolute;	
+	padding:0px 0px 0px 45px;
+ }
+ .user_icon2{
+	position:relative;	
+	left:-5px;
+	top:0px;
+	margin:0px 0px 0px 0px;
+	padding:0px 0px 0px 0px;
+ }
+ .user_talk_box {
+	position:absolute;
+	width:210px; 
+	height:313px;
+	padding:0px 10px 10px 5px;
+	margin:0px 0px 0px 0px;
+	background:url(./img/tools/white_arrow.png) 0px 7px no-repeat;
+}
+.user_talk_box h4{/*풍선 안 질문글*/
+	padding:30px 15px 30px 15px;
+	height:65px;
+	font-weight: bold;
+	font-size:15px;
+	border:0px solid #ddd;
+ }
+
+.user_talk_box h5{/*질문자 이름*/
+	position:relative;	
+	padding:115px 30px 10px 30px;
+	font-weight: bold;
+	font-size:15px;
+	text-align:center;
+ }
+.btn_write{/*답글달기 연필버튼*/
+	position:relative;	
+	z-index:0;
+	top:230px;
+	left:10px;
+	margin:0px 5px 0px 0px;
+	padding:13px 5px 0px 0px;
+	border:0px solid #777777;
+ }
+.user_talk_answer{
+	position:absolute;
+	left:210px;
+	width:310px; 
+	height:190px;
+	margin:0px 0px 0px 0px;
+	padding:10px 0px 0px 0px;
+	overflow-x:hidden;
+	overflow-y:auto;
+} 
+
+/* the action buttons above the scrollable */
+.talk_actions {
+	width:517px;
+	margin:0px 0px 0px 0px;	
+}
+ 
+.talk_actions a {
+	font-size:11px;		
+	cursor:pointer;
+	color:#666;
+}
+ 
+.talk_actions a:hover {
+	text-decoration:underline;
+	color:#000;
+}
+ 
+.talk_disabled {
+	visibility:hidden;		
+}
+ 
+.talk_nextPage {
+	float:right;
+}	
+/**************************************************************************/
+
+/* root element for tabs  */
+ul.tabs { 
+	list-style:none; 
+	margin:0 !important; 
+	padding:0;
+	height:30px;
+	border-bottom:1px solid #666;	
+}
+
+/* single tab */
+ul.tabs li { 
+	float:left;	 
+	text-indent:0;
+	padding:0;
+	margin:0 !important;
+	list-style-image:none !important; 
+}
+
+/* link inside the tab. uses a background image */
+ul.tabs a { 
+	background: url(./img/tab/tabs3.png) no-repeat -652px 0;
+	font-size:11px;
+	display:block;
+	height: 30px;  
+	line-height:30px;
+	width: 81px;
+	text-align:center;	
+	text-decoration:none;
+	color:#000;
+	padding:0px;
+	margin:0px;	
+	position:relative;
+	top:1px;
+}
+
+ul.tabs a:active {
+	outline:none;		
+}
+
+/* when mouse enters the tab move the background image */
+ul.tabs a:hover {
+	background-position: -652px -31px;	
+	color:#fff;	
+}
+
+/* active tab uses a class name "current". it's highlight is also done by moving the background image. */
+ul.tabs a.current, ul.tabs a.current:hover, ul.tabs li.current a {
+	background-position: -652px -62px;		
+	cursor:default !important; 
+	color:#000 !important;
+}
+
+/* Different widths for tabs: use a class name: w1, w2, w3 or w2 */
+
+
+/* width 1 */
+ul.tabs a.w1 			{ background-position: -519px 0; width:134px; }
+ul.tabs a.w1:hover 	{ background-position: -519px -31px; }
+ul.tabs a.w1.current { background-position: -519px -62px; }
+
+/* width 2 */
+ul.tabs a.w2 			{ background-position: -366px -0px; width:154px; }
+ul.tabs a.w2:hover 	{ background-position: -366px -31px; }
+ul.tabs a.w2.current { background-position: -366px -62px; }
+
+
+/* width 3 */
+ul.tabs a.w3 			{ background-position: -193px -0px; width:174px; }
+ul.tabs a.w3:hover 	{ background-position: -193px -31px; }
+ul.tabs a.w3.current { background-position: -193px -62px; }
+
+/* width 4 */
+ul.tabs a.w4 			{ background-position: -0px -0px; width:194px; }
+ul.tabs a.w4:hover 	{ background-position: -0px -31px; }
+ul.tabs a.w4.current { background-position: -0px -62px; }
+
+
+/* initially all panes are hidden */ 
+
+
+.tab_panes p {
+	list-style: none;
+	border-bottom: 1px solid #ebebeb;
+	padding: 10px 10px 10px 10px;
+}
+.tab_panes p a:link, .tab_panes p a:visited {
+	color: #727272;
+	text-decoration: none;
+	display: block;
+}
+.tab_panes p a:hover {
+	color: #b84104;
+	text-decoration: none;
+}
+.tab_panes p a:active {
+	color: #727272;
+	text-decoration: none;
+}
+

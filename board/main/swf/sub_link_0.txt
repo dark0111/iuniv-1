@@ -1,0 +1,8 @@
+&subLink00=board/index.php?mode=house_list
+&subLink01=board/bbs/board.php?bo_table=room_mate
+&subLink02=board/bbs/board.php?bo_table=house_deal
+&subLink03=
+&subLink04=
+&subLink05=
+&subLink06=
+&loadok=ok

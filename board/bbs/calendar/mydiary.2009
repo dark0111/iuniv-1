@@ -1,0 +1,41 @@
+2009년 스케쥴스킨에서 불러쓰는 달력 내용, r=빨, b=파, g=회, y=갈 8자리 날짜와 공백없이 내용 입력, 내용은 간단히, 날짜중복 검토요!
+r20090101신정
+b20090105소한
+b20090120대한
+b20090204입춘
+b20090214발렌타인데이
+r20090301<img src=../skin/board/schedule_i/img/bull_a.gif align=absmiddle> 삼일절
+b20090305경칩
+b20090314화이트데이
+b20090320춘분
+b20090405식목일
+b20090420장애인의날
+r20090501근로자의날
+r20090505어린이날, <font color=blue>입하</font>
+b20090508어버이날
+b20090515스승의날
+b20090518518기념일
+b20090519성년의날
+b20090521부부의날
+r20090606<img src=../skin/board/schedule_i/img/bull_a.gif align=absmiddle> 현충일
+b20090621하지
+b20090707소서
+b20090717<img src=../skin/board/schedule_i/img/bull_a.gif align=absmiddle> 제헌절
+b20090714초복
+b20090723대서
+b20090724중복
+b20090807입추
+b20090813말복
+r20090815<img src=../skin/board/schedule_i/img/bull_a.gif align=absmiddle> 광복절
+b20090823처서
+b20090923추분
+b20091001국군의날
+r20091003<img src=../skin/board/schedule_i/img/bull_a.gif align=absmiddle> 개천절
+b20091009한글날
+b20091021경찰의날
+b20091107입동
+b20091122소설
+b20091207대설
+b20091222동지
+r20091225성탄절
+#빈줄삽입, 절기 => http://www.kasi.re.kr/knowledge/almanac.aspx

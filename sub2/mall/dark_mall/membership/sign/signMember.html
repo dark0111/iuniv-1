@@ -1,0 +1,265 @@
+<?
+session_start();
+IF(!$HTTP_SESSION_VARS[ON_ID] AND !$HTTP_SESSION_VARS[ON_NAME] AND !$HTTP_SESSION_VARS[ON_EMAIL]) {
+include "../../include/dbcon.php";
+$CATEVALUE = "<a href=\"/\" class='user_category_value'>홈</a> ";
+$CATEVALUE .= "> 회원가입";
+
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>회원가입</title>
+	<link rel="STYLESHEET" type="text/css" href="../../style/style.css">
+	<script language="javascript">
+	function JoinMember() {
+		if(!MemberForm.name.value) {
+		alert("이름을 입력하시기 바랍니다.           ");
+		MemberForm.name.focus();
+		return false;
+		}
+
+		if(!MemberForm.jumin1.value) {
+		alert("주민등록번호를 입력하시기 바랍니다.           ");
+		MemberForm.jumin1.focus();
+		return false;
+		}
+
+		if(!MemberForm.jumin2.value) {
+		alert("주민등록번호를 입력하시기 바랍니다.           ");
+		MemberForm.jumin2.focus();
+		return false;
+		}
+
+		str1=MemberForm.jumin1.value
+		str2=MemberForm.jumin2.value
+		a1 = parseInt(str1.charAt(0))*2
+		a2 = parseInt(str1.charAt(1))*3
+		a3 = parseInt(str1.charAt(2))*4
+		a4 = parseInt(str1.charAt(3))*5
+		a5 = parseInt(str1.charAt(4))*6
+		a6 = parseInt(str1.charAt(5))*7
+		a7 = parseInt(str2.charAt(0))*8
+		a8 = parseInt(str2.charAt(1))*9
+		a9 = parseInt(str2.charAt(2))*2
+		a10 = parseInt(str2.charAt(3))*3
+		a11 = parseInt(str2.charAt(4))*4
+		a12 = parseInt(str2.charAt(5))*5
+		tot=a1+a2+a3+a4+a5+a6+a7+a8+a9+a10+a11+a12
+		
+		na=tot%11
+		ch=11-na
+		
+		if(ch==10)ch=0
+		if(ch==11)ch=1
+		
+		if(ch==parseInt(str2.charAt(6))) {} else {
+			alert('주민번호가 잘못되었습니다.       ');
+			MemberForm.jumin1.focus();
+			return false;
+		}
+
+		var form = MemberForm;
+		form.target = 'MemberCheck';
+		form.action = '_signMember_check.php';
+		form.submit();
+
+	}
+	
+	function Num(field) {
+		var valid = "1234567890";
+		var ok = "yes";
+		var temp;
+		for (var i=0; i<field.value.length; i++) {
+			temp = "" + field.value.substring(i, i+1);
+			if (valid.indexOf(temp) == "-1") ok = "no";
+		}
+		if (ok == "no") {
+			alert("숫자만이 입력이 가능합니다.        ");
+			field.focus();
+			field.select();
+		}
+	}
+	
+	function Join_ok() {
+		
+		if(MemberForm.signCheck.value=="0") {
+			alert("회원가입여부를 확인하여 주시기 바랍니다.     ");
+			MemberForm.name.focus();
+			return false;
+		}
+
+		if(MemberForm.signCheck.value=="2") {
+			alert("이미 가입하셨습니다.           ");
+			return false;
+		} else if(MemberForm.signCheck.value=="1") {
+			MemberJoin.action="signMember.php";
+		}
+
+	}
+
+	</script>
+</head>
+
+<body>
+<?
+include "../../template/head.php";
+?>
+<table border=0 cellpadding=0 cellspacing=0 width=900 align=center>
+<tr>
+<td bgcolor="#ffffff">
+	<table broder=0 cellpadding=0 cellspacing=0 width=100%>
+	<tr>
+	<td bgcolor="#ffffff" class="user_category_value"><?=$CATEVALUE;?></td>
+	</tr>
+
+	<tr><td height=5 bgcolor="#ffffff"></td></tr>
+	<tr><td height=1 bgcolor="#eeeeee"></td></tr>
+	<tr><td height=5 bgcolor="#ffffff"></td></tr>
+
+	<tr>
+	<td bgcolor="#ffffff" width="900" align=center>
+	
+		<table border=0 cellpadding=0 cellspacing=0 width=380 height=150>
+		<tr>
+		<td background="../../image/membership/image1.gif" align=center valign=top>
+			<!-- 회원가입여부 확인 <시작> -->
+			<table border=0 cellpadding=0 cellspacing=0 width=364>
+
+			<tr>
+			<td style="padding:10 0 5 0" class="membership">회원가입여부확인</td>
+			</tr>
+
+			<tr>
+			<td><img src="../../image/membership/image2.gif" width="364" height="1" border="0"></td>
+			</tr>
+			
+			<tr>
+			<td align=center>
+			
+				<table border=0 cellpadding=0 cellspacing=0>
+				<tr><td height=5></td></tr>
+				
+				<tr>
+				<form name="MemberForm" method="post" onsubmit="return JoinMember()">
+				<td align=right>이 름</td>
+				<td width=5></td>
+				<td colspan=3><input type="text" size="30" maxlength="10" name="name"></td>
+				</tr>
+
+				<tr>
+				<td align=right>주민등록번호</td>
+				<td width=5></td>
+				<td><input type="text" size="13" maxlength="6" name="jumin1" onblur="Num(this)"></td>
+				<td style="padding:5 5 5 5">-</td>
+				<td><input type="text" size="13" maxlength="7" name="jumin2" onblur="Num(this)"></td>
+				</tr>
+
+				<tr><td colspan=5 height=5></td></tr>
+
+				<tr>
+				<td align=right></td>
+				<td width=5></td>
+				<td colspan=3><input type="image" src="../../image/membership/bt1.gif" width="96" height="21" border="0"></td>
+				</tr>
+				<input type="hidden" name="signCheck" value="0">
+
+				<tr><td colspan=5 height=10></td></tr>
+				
+				<tr>
+				<td align=right></td>
+				<td width=5></td>
+				<td colspan=3>
+					<a href="/membership/lost/lost.html">아이디/비밀번호 분실</a>
+				</td></tr>
+
+				</form>
+				</table>
+
+				<iframe name="MemberCheck" frameborder="0" marginwidth="0" marginheight="0" width=0 height=0></iframe>
+			
+			</td>
+			</tr>
+			</table>
+			<!-- 회원가입여부 확인 <종료> -->
+		
+		</td>
+		</tr>
+		</table>
+	
+	</td>
+	</tr>
+	
+	<tr><td height=20></td></tr>
+	
+	<tr>
+	<td align=center>
+		<table border=0 cellpadding=0 cellspacing=0 width=600>
+		<tr>
+		<td class="membership">개인정보보호정책</td>
+		</tr>
+				
+		<tr>
+		<td>
+			<table border=0 cellpadding=0 cellspacing=1 bgcolor="#eeeeee" width=600 height=200>
+			<tr><td bgcolor="#ffffff"></td></tr>
+			</table>
+		</td>
+		</tr>
+		</table>
+	</td>
+	</tr>
+	
+	<tr><td height=20></td></tr>
+	
+	<tr>
+	<td align=center>
+		<table border=0 cellpadding=0 cellspacing=0 width=600>
+		<tr>
+		<td class="membership">이용약관</td>
+		</tr>
+				
+		<tr>
+		<td>
+			<table border=0 cellpadding=0 cellspacing=1 bgcolor="#eeeeee" width=600 height=200>
+			<tr><td bgcolor="#ffffff"></td></tr>
+			</table>
+		</td>
+		</tr>
+		</table>
+	</td>
+	</tr>
+	<form name="MemberJoin" method="post" onsubmit="return Join_ok()">
+	<input type="hidden" name="name">
+	<input type="hidden" name="jumin1">
+	<input type="hidden" name="jumin2">
+	<tr><td height=20></td></tr>
+	<tr><td height=20 align=center>
+	<input type="image" src="../../image/membership/bt2.gif" width="96" height="21" alt="">	
+	</td></tr>	
+	</form>
+	</table>
+
+	
+	
+	
+</td></tr>
+</table>	
+
+<?
+include "../../template/footer.php";
+?>
+</body>
+</html>
+
+<?
+} ELSE {
+?>
+<script language="javascript">
+parent.location.href="/";
+</script>
+<?
+}
+mysql_close($connection);
+?>

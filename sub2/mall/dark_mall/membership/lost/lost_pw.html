@@ -1,0 +1,219 @@
+<?
+session_start();
+IF(!$HTTP_SESSION_VARS[ON_ID] AND !$HTTP_SESSION_VARS[ON_NAME] AND !$HTTP_SESSION_VARS[ON_EMAIL]) {
+include "../../include/dbcon.php";
+$CATEVALUE = "<a href=\"/\" class='user_category_value'>홈</a> ";
+$CATEVALUE .= "> <a href=\"./lost.html\" class='user_category_value'>로그인정보 분실</a> > 비밀번호 찾기";
+?>
+
+<?
+if(!$r) {
+?>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>비밀번호 찾기</title>
+	<link rel="STYLESHEET" type="text/css" href="../../style/style.css">
+	<script language="javascript">
+	function PWForm() {
+		if(!LostForm.id.value) {
+		alert("아이디를 입력하여 주시기 바랍니다.        ");
+		LostForm.id.focus();
+		return false;
+		}
+	
+		if(!LostForm.pw_a.value) {
+		alert("질문의 답을 입력하여 주시기 바랍니다.        ");
+		LostForm.pw_a.focus();
+		return false;
+		}
+
+		LostForm.target = "result";
+		LostForm.action = "_result.php";
+
+	}
+	</script>
+	
+</head>
+
+<body>
+<?
+include "../../template/head.php";
+?>
+<table border=0 cellpadding=0 cellspacing=0 width=900 align=center>
+<tr>
+<td bgcolor="#ffffff">
+	<table broder=0 cellpadding=0 cellspacing=0 width=100%>
+	<tr>
+	<td bgcolor="#ffffff" class="user_category_value"><?=$CATEVALUE;?></td>
+	</tr>
+
+	<tr><td height=5 bgcolor="#ffffff"></td></tr>
+	<tr><td height=1 bgcolor="#eeeeee"></td></tr>
+	<tr><td height=5 bgcolor="#ffffff"></td></tr>
+
+	<tr>
+	<td bgcolor="#ffffff" width="900" align=center>
+
+		<!-- 비밀번호 찾기의 <시작> -->
+		<table border=0 cellpadding=0 cellspacing=0 width="480" height="210">
+		<tr>
+		<td background="../../image/lost/image5.gif" align=center>
+
+			<table border=0 cellpadding=0 cellspacing=0 width=420>
+			<tr><td height=40></td></tr>
+			<tr><td colspan=2 height=1 bgcolor="#eeeeee"></td></tr>
+			<form name="LostForm" methos="post" onsubmit="return PWForm()">
+			<input type="hidden" name="result" value="lost_pw">
+
+			<tr>
+			<td width=100 align=center style="padding:13 0 10 0">아이디</td>
+			<td width=320><input type="text" name="id" size=27></td>
+			</tr>
+			<tr><td colspan=2 height=1 bgcolor="#eeeeee"></td></tr>
+
+			<tr>
+			<td width=100 align=center style="padding:13 0 10 0">가입시 질문</td>
+			<td width=320>
+			<select name="pw_q" class="SelectBox" style="width:300">
+			<option value="가장 기억에 남는 장소는?" selected>가장 기억에 남는 장소는?
+			<option value="나의 좌우명은?" >나의 좌우명은?
+			<option value="나의 보물 제1호는?" >나의 보물 제1호는?
+			<option value="내가 존경하는 인물은?" >내가 존경하는 인물은?
+			<option value="내가 좋아하는 만화 캐릭터는?" >내가 좋아하는 만화 캐릭터는?
+			<option value="오래도록 기억하고 싶은 날짜는?" >오래도록 기억하고 싶은 날짜는?
+			<option value="받았던 선물 중 기억에 남는 독특한 선물은?" >받았던 선물 중 기억에 남는 독특한 선물은?
+			<option value="나의 노래방 애창곡은?" >나의 노래방 애창곡은?
+			<option value="인상 깊게 읽은 책 이름은?" >인상 깊게 읽은 책 이름은?
+			<option value="나의 출신 초등학교는?" >나의 출신 초등학교는?
+			</select>			
+			</td>
+			</tr>
+
+			<tr><td colspan=2 height=1 bgcolor="#eeeeee"></td></tr>
+
+			<tr>
+			<td width=100 align=center style="padding:13 0 10 0">질문의 답</td>
+			<td width=320><input type="text" name="pw_a" size="25" maxlength="30"></td>
+			</tr>
+
+			<tr><td colspan=2 height=1 bgcolor="#eeeeee"></td></tr>
+
+			<tr>
+			<td width=100 align=center></td>
+			<td width=320 style="padding:13 0 10 0"><input type="image" src="../../image/lost/bt2.gif" width="96" height="21"></td>
+			</tr>
+			</form>
+
+			</table>
+			<iframe name="result" frameborder="0" marginwidth="0" marginheight="0" width="0" height="0"></iframe>
+		
+		</td>
+		</tr>
+		</table>
+		<!-- 비밀번호 찾기의 <종료> -->
+	
+	</td></tr>	
+	</table>
+	
+</td></tr>
+</table>	
+
+<?
+include "../../template/footer.php";
+?>
+</body>
+</html>
+
+<?
+} else {
+?>
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>비밀번호가 변경되었습니다</title>
+	<link rel="STYLESHEET" type="text/css" href="../../style/style.css">
+</head>
+
+<body>
+<?
+include "../../template/head.php";
+?>
+<table border=0 cellpadding=0 cellspacing=0 width=900 align=center>
+<tr>
+<td bgcolor="#ffffff">
+	<table broder=0 cellpadding=0 cellspacing=0 width=100%>
+	<tr>
+	<td bgcolor="#ffffff" class="user_category_value"><?=$CATEVALUE;?></td>
+	</tr>
+
+	<tr><td height=5 bgcolor="#ffffff"></td></tr>
+	<tr><td height=1 bgcolor="#eeeeee"></td></tr>
+	<tr><td height=5 bgcolor="#ffffff"></td></tr>
+
+	<tr>
+	<td bgcolor="#ffffff" width="900" align=center>
+
+		<!-- 비밀번호 찾기의 <시작> -->
+		<table border=0 cellpadding=0 cellspacing=0 width="480" height="210">
+		<tr>
+		<td background="../../image/lost/image6.gif" align=center valign=top>
+
+			<table border=0 cellpadding=0 cellspacing=0 width=420>
+			<tr><td height=40></td></tr>
+			<tr><td colspan=2 height=1 bgcolor="#eeeeee"></td></tr>
+			<tr><td height=130 align=center>
+				<table border=0 cellpadding=0 cellspacing=0>
+				<tr>
+				<td style="line-height:24px">
+				임시비밀번호가 발급되었습니다.
+				<br>
+				임시 비밀번호는 <strong><?=base64_decode($lp)?></strong>
+				</td>
+				</tr>
+				<tr><td height=10></td></tr>
+				<tr><td align=center>
+				<a href="/source/signin/Signin.html"><img src="../../image/lost/bt3.gif" width="96" height="21" border="0"></a>
+				</td></tr>
+				</table>
+			</td></tr>
+			<tr><td colspan=2 height=1 bgcolor="#eeeeee"></td></tr>
+			</table>
+			<iframe name="result" frameborder="0" marginwidth="0" marginheight="0" width="0" height="0"></iframe>
+		</td>
+		</tr>
+		</table>
+		<!-- 비밀번호 찾기의 <종료> -->
+	
+	</td></tr>	
+	</table>
+	
+</td></tr>
+</table>	
+
+<?
+include "../../template/footer.php";
+?>
+</body>
+</html>
+
+
+<?
+}
+?>
+
+<?
+} ELSE {
+?>
+<script language="javascript">
+parent.location.href="/";
+</script>
+<?
+}
+mysql_close($connection);
+?>

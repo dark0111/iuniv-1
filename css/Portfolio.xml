@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cameras xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Portfolio.xsd">
+	<!-- Main Element - Config Model -->
+	<camera>
+		<model_id>CA_0001</model_id>
+		<model_nm>D300s</model_nm>
+		<model_img>http://imgdc.dcinside.com/contents/goods/model/8593_d300sm.jpg</model_img>
+		<company>니콘</company>
+		<price>최저가:1,767,000원</price>
+		<camera_type>DSLR</camera_type>
+		<sensor>
+			<sensor_type>CMOS</sensor_type>
+			<pixel>1,230만</pixel>
+			<size>23.6 x 15.8mm</size>
+		</sensor>
+		<lens>
+			<mount_type>NIKON DX Mount</mount_type>
+			<compatibility>AF-S, AF-I, AF G or D</compatibility>
+		</lens>
+		<performance>
+			<shutter_speed>1/8000 ~ 30 sec</shutter_speed>
+			<metering><![CDATA[1005분할 RGB센서에 의한 TTL개방 측광 방식
+			 : 약 φ8mm 상당을 측광(중앙부 중점도 약 75%), φ6mm,φ10mm, φ13mm
+			 : 3D-RGB멀티 패턴 측광II(G/D타입 렌즈 사용시), RGB멀티패턴 측광II
+			 : 약φ3 mm상당(전체 화면의 약 2%)을 측광, 포커스 포인트에 연동하여 측광 위치 가동]]></metering>
+			<live_view>지원 (구도 우선/ 초점 우선)</live_view>
+			<continuous_shoting>7fps</continuous_shoting>
+			<video>1,280 x 720(24fps) / 640 x 424(24fps) / 320 x 216(24fps)</video>
+		</performance>
+		<lcd_size>3인치 92만 화소</lcd_size>
+		<memory_card>CF/SD/SDHC</memory_card>
+		<weight>840g</weight>
+		<size>147×114×74 mm</size>
+	</camera>
+</cameras>

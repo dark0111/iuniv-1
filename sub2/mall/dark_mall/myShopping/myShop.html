@@ -1,0 +1,225 @@
+<?
+session_start();
+IF($HTTP_SESSION_VARS[ON_ID] AND $HTTP_SESSION_VARS[ON_NAME] AND $HTTP_SESSION_VARS[ON_EMAIL]) {
+include "../include/dbcon.php";
+$CATEVALUE = "<a href=\"/\" class='user_category_value'>홈</a> ";
+$CATEVALUE .= "> 나의쇼핑정보";
+
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>나의쇼핑정보</title>
+	<link rel="STYLESHEET" type="text/css" href="../style/style.css">
+</head>
+
+<body>
+<?
+include "../template/head.php";
+?>
+<table border=0 cellpadding=0 cellspacing=0 width=900 align=center>
+<tr>
+<td bgcolor="#ffffff">
+	<table broder=0 cellpadding=0 cellspacing=0 width=100%>
+	<tr>
+	<td bgcolor="#ffffff" class="user_category_value"><?=$CATEVALUE;?></td>
+	</tr>
+
+	<tr><td height=5 bgcolor="#ffffff"></td></tr>
+	<tr><td height=1 bgcolor="#eeeeee"></td></tr>
+	<tr><td height=5 bgcolor="#ffffff"></td></tr>
+
+	<tr>
+	<td bgcolor="#ffffff" width="900" align=center>
+		<table border=0 cellpadding=0 cellspacing=0>
+
+		<tr>
+		<!-- 나의 정보 관리 <시작> -->
+		<td>
+			<table border=0 cellpadding=0 cellspacing=0 width=220 height=190>
+			<tr>
+			<td background="../image/myshopping/image1.gif" align=center valign=top>
+				<table border=0 cellpadding=0 cellspacing=0 width=200>
+				<tr><td height=39></td></tr>
+				<tr><td height=1 bgcolor="#eeeeee"><img width=0 height=1></td></tr>
+				<tr><td height=150 valign=top>
+				
+					<table border=0 cellpadding=0 cellspacing=0 width=200>
+					<tr>
+					<td height=10></td>
+					</tr>
+					<tr>
+					<td>
+					<img src="../image/myshopping/icon1.gif" width="10" height="11" align=left>
+					<a href="./myinfo/membership.html"><?=$HTTP_SESSION_VARS[ON_NAME]?>님 정보 수정</a>
+					</td>
+					</tr>
+					</table>
+				</td></tr>
+				</table>
+			</td>
+			</tr>
+			</table>
+		</td>
+		<!-- 나의 정보 관리 <종료> -->
+		<td width=10></td>
+
+		<!-- 구매하고 있어요 <시작> -->
+		<td>
+			<table border=0 cellpadding=0 cellspacing=0 width=220 height=190>
+			<tr>
+			<td background="../image/myshopping/image2.gif" align=center valign=top>
+				<table border=0 cellpadding=0 cellspacing=0 width=200>
+				<tr><td height=39>
+					<table border=0 cellpadding=0 cellspacing=0>
+					<tr>
+					<td width=130></td>
+					<td width=70 align=right style="padding:7 0 0 0"><img src="../image/myshopping/buy.gif" width="62" height="19" border="0"></td>
+					</tr>
+					</table>
+				</td></tr>
+				<tr><td height=1 bgcolor="#eeeeee"><img width=0 height=1></td></tr>
+				<tr><td height=150 valign=top>
+					<table border=0 cellpadding=0 cellspacing=0>
+					<tr>
+					<td height=10></td>
+					</tr>
+					<tr><td height=22><img src="../image/myshopping/icon1.gif" width="10" height="11" align=left>장바구니 : 건</td></tr>
+					<tr><td height=22><img src="../image/myshopping/icon1.gif" width="10" height="11" align=left>입금요망 : 건</td></tr>
+					<tr><td height=22><img src="../image/myshopping/icon1.gif" width="10" height="11" align=left>결제완료 : 건</td></tr>
+					</table>
+				</td></tr>
+				</table>
+			</td>
+			</tr>
+			</table>
+		</td>
+		<!-- 구매하고 있어요 <종료> -->
+
+		<td width=10></td>
+
+		<!-- 판매하고 있어요 <시작> -->
+		<td>
+			<table border=0 cellpadding=0 cellspacing=0 width=220 height=190>
+			<tr>
+			<td background="../image/myshopping/image3.gif" align=center valign=top>
+				<table border=0 cellpadding=0 cellspacing=0 width=200>
+				<tr><td height=39>
+					<table border=0 cellpadding=0 cellspacing=0>
+					<tr>
+					<td width=130></td>
+					<td width=70 align=right style="padding:7 0 0 0"><a href="./sell/sellhome.html"><img src="../image/myshopping/sell.gif" width="62" height="19" border="0"></a></td>
+					</tr>
+					</table>
+				</td></tr>
+				<tr><td height=1 bgcolor="#eeeeee"><img width=0 height=1></td></tr>
+				<tr><td height=150 valign=top>
+					<table border=0 cellpadding=0 cellspacing=0 width=200>
+					<tr>
+					<td height=10></td>
+					</tr>
+					<tr>
+					<td>
+						<table border=0 cellpadding=0 cellspacing=0>
+						<tr><td height=22><img src="../image/myshopping/icon1.gif" width="10" height="11" align=left>판매중인 상품 : 건</td></tr>
+						<tr><td height=22><img src="../image/myshopping/icon1.gif" width="10" height="11" align=left>발송중인 상품 : 건</td></tr>
+						<tr><td height=22><img src="../image/myshopping/icon1.gif" width="10" height="11" align=left>입금 확인중인 상품 : 건</td></tr>
+						<tr><td height=22><img src="../image/myshopping/icon1.gif" width="10" height="11" align=left>발송요청한 상품 : 건</td></tr>
+						<tr><td height=22><img src="../image/myshopping/icon1.gif" width="10" height="11" align=left>송금완료한 상품 : 건</td></tr>
+						</table>
+					</td>
+					</tr>
+					</table>
+				
+				</td></tr>
+				</table>
+			</td>
+			</tr>
+			</table>
+		</td>
+		<!-- 판매하고 있어요 <종료> -->
+
+		</tr>
+		
+		<tr><td colspan=3 height=10></td></tr>
+		
+		<tr>
+		<!-- 장바구니,관심상품 <시작> -->
+		<td>
+			<table border=0 cellpadding=0 cellspacing=0 width=220 height=190>
+			<tr>
+			<td background="../image/myshopping/image4.gif" align=center valign=top>
+				<table border=0 cellpadding=0 cellspacing=0 width=200>
+				<tr><td height=39></td></tr>
+				<tr><td height=1 bgcolor="#eeeeee"><img width=0 height=1></td></tr>
+				<tr><td height=150 valign=top></td></tr>
+				</table>
+			</td>
+			</tr>
+			</table>
+		</td>
+		<!-- 장바구니,관심상품 <종료> -->
+		<td width=10></td>
+
+		<!-- 맞춤 서비스 <시작> -->
+		<td>
+			<table border=0 cellpadding=0 cellspacing=0 width=220 height=190>
+			<tr>
+			<td background="../image/myshopping/image5.gif" align=center valign=top>
+				<table border=0 cellpadding=0 cellspacing=0 width=200>
+				<tr><td height=39></td></tr>
+				<tr><td height=1 bgcolor="#eeeeee"><img width=0 height=1></td></tr>
+				<tr><td height=150></td></tr>
+				</table>
+			</td>
+			</tr>
+			</table>
+		</td>
+		<!-- 맞춤 서비스 <종료> -->
+
+		<td width=10></td>
+
+		<!-- 나의 e통장보기 <시작> -->
+		<td>
+			<table border=0 cellpadding=0 cellspacing=0 width=220 height=190>
+			<tr>
+			<td background="../image/myshopping/image6.gif" align=center valign=top>
+				<table border=0 cellpadding=0 cellspacing=0 width=200>
+				<tr><td height=39></td></tr>
+				<tr><td height=1 bgcolor="#eeeeee"><img width=0 height=1></td></tr>
+				<tr><td height=150>
+					
+				</td></tr>
+				</table>
+			</td>
+			</tr>
+			</table>
+		</td>
+		<!-- 나의 e통장보기 <종료> -->
+
+		</tr>
+		
+		</table>		
+	
+	</td></tr>	
+	</table>
+
+</td></tr>
+</table>	
+
+<?
+include "../template/footer.php";
+?>
+</body>
+</html>
+<?
+} ELSE {
+?>
+<script language="javascript">
+parent.location.href="/";
+</script>
+<?
+}
+mysql_close($connection);
+?>

@@ -1,0 +1,56 @@
+ul.siteList { 
+	width:950px; 
+	left:-40px;
+	top:-10px;
+	border:0px solid #666666; 
+	position:relative;
+}
+ul.siteList li.normal { 
+	margin:0; 
+	padding:0px 0px 0px 0px; 
+	margin:0px 0px 0px 0px; 
+	width:180px; 
+	float:left; 
+	border:0px solid #666666; 
+	position:relative;
+}
+ul.siteList li.last {
+	padding:0px 0px 15px 0px; 
+	margin:0px 0px 0px 0px; 
+	width:180px; 
+	border:0px solid #666666; 
+	position:relative;
+}
+ul.siteList li a { 
+	margin:0; 
+	padding:0; 
+	border:none; 
+}
+ul.siteList li img {
+	margin:0;
+	padding:0;
+	float:left;
+	border:1px solid #DDDDDD; 
+}
+ul.siteList li p { 
+	margin:0;
+	padding:0 5px 0 0;
+	width:180px;
+	font-size:1em;
+	text-align:right;
+	float:left; 
+	clear:both;
+}
+ul.siteList li p a { float:none; }
+ul.siteList li .rating { margin:0; padding:5px; float:left; clear:both; width:170px; height:78px; overflow:hidden; background: #FCFCFC; border-right:1px solid #DDDDDD; border-bottom:1px solid #DDDDDD; border-left:1px solid #DDDDDD; }
+ul.siteList li .owned { background:#DDDDDD; }
+ul.siteList li .rating h4 { margin:0; padding:0 0 2px; width:180px; text-align:left; font-size:1em; line-height:1.1em; }
+ul.siteList li .rating p { margin:0; padding:0; width:180px; text-align:left; font-size:0.9em; line-height:0.9em; }
+ul.siteList li .rating p.urlText { margin-top:5px; overflow:hidden; }
+ul.siteList li .rating .ratingblock { height:35px; }
+ul.siteList li .rating2 { margin:0; padding:0 5px 1px; float:left; clear:both; width:170px; height:19px; overflow:hidden; background:#DDDDDD; border-right:1px solid #DDDDDD; border-top:1px solid #DDDDDD; border-left:1px solid #DDDDDD; text-align:left; }
+ul.siteList li .rating2 p { text-align:center; }
+ul.siteList li .rating2 a:link { color:#444444; text-decoration:none; }
+ul.siteList li .rating2 a:visited { color:#444444; text-decoration:none; }
+ul.siteList li .rating2 a:hover { color:#444444; text-decoration:underline; }
+ul.siteList li .rating2 a:active { color:#444444; }

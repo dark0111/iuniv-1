@@ -1,0 +1,8 @@
+&subLink40=board/bbs/board.php?bo_table=qna
+&subLink41=board/bbs/board.php?bo_table=reg_room
+&subLink42=board/bbs/board.php?bo_table=reg_restaurant
+&subLink43=
+&subLink44=
+&subLink45=
+&subLink46=
+&loadok=ok

@@ -1,0 +1,167 @@
+<!--<?
+    $hostname = exec("/home/bin/hostname");
+?>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>대한민국 No.1 카페24 호스팅</title>
+</head>
+<body>
+<iframe frameborder=0 scrolling=no marginwidth=0 marginheight=0 width=100% height=100%  src=http://hostinfo.cafe24.com/index.php?hostname=<?=$hostname;?>></iframe>
+</body>
+</html>
+-->
+<?
+//print_r(os_check());
+//print_r(browser_check());
+##################
+#### 운영체제 ####
+##################
+$os_system = Array();
+$os_system['0'] = 'unknown';
+$os_system['1'] = 'Microsoft Windows';
+$os_system['2'] = 'LINUX';
+$os_system['3'] = 'UNIX';
+$os_system['4'] = 'OS/2';
+$os_system['5'] = 'IRIX';
+$os_system['6'] = 'HP-UNIX';
+$os_system['7'] = 'AIX';
+$os_system['8'] = 'SUN';
+$os_system['9'] = 'FreeBSD';
+$os_system['10'] = 'MacIntosh';
+##################
+#### 브라우져 ####
+##################
+$agent = Array();
+$agent['0'] = 'unknown';
+$agent['1'] = 'Microsoft Internet Explorer';
+$agent['2'] = 'Netscape';
+$agent['3'] = 'Opera';
+$agent['4'] = 'Mozilla';
+$agent['5'] = 'firefox';
+/**
+* browser_check()
+* 브라우져 종류 가져오기
+* @return Array $browser 
+* @auth : iezn
+* @homepage : iezn.com
+*/
+function browser_check(){
+	$browser = Array();
+	$is_agent = strtolower($_SERVER['HTTP_USER_AGENT']);
+	if (eregi('msie', $is_agent)){
+		$matches = Array();
+		preg_match("/msie ([0-9][.][0-9]{0,3})/i",$is_agent,$matches);
+		$browser[0] = '1';
+		$browser[1] = $matches[1];
+	}elseif (eregi('netscape', $is_agent)){
+		$browser[0] = '2';
+		$browser[1] = preg_replace("/[^0-9+.]/","",substr($is_agent,strrpos($is_agent,'netscape')));
+	}elseif (eregi('opera', $is_agent)){
+		$browser[0] = '3';
+		$browser[1] = '0';
+	}
+	else{
+		if(eregi('firefox',$is_agent)){//파폭
+			preg_match("/firefox\/([0-9]{0,2}[.][0-9]{0,3}[.][0-9]{0,3})/i",$is_agent,$matches);
+			$browser[0] = '5';
+			$browser[1] = $matches[1];
+		}elseif(eregi('mozilla',$is_agent)){//모질라
+			$browser[0] = '4';
+			if(eregi('rv',$is_agent)){
+				preg_match_all("/rv:(.*)\)/i",$is_agent,$matches,PREG_SET_ORDER);
+				$browser[1] = $matches[0][1];
+			}
+		}
+		else
+		{
+			$browser[0] = '0';
+			$browser[1] = '0';
+		}
+	}
+	return $browser;
+}
+/**
+* os_check(); 
+* OS 종류 가져오기
+* @return Array 
+* @auth : iezn
+* @homepage : iezn.com
+*/
+function os_check(){
+ $os = Array();
+ $agent = strtolower($_SERVER['HTTP_USER_AGENT']);
+ if (eregi('win95', $agent) || eregi('windows 95', $agent)){
+  $os['system'] = '1';
+  $os['version'] = '95';
+ }elseif (eregi('win 9x 4.90', $agent)){
+  $os['system'] = '1';
+  $os['version'] = 'Me';
+ }elseif (eregi('win98', $agent) || eregi('windows 98', $agent)){
+  $os['system'] = '1';
+  $os['version'] = '98';
+ }elseif (eregi('windows nt 5.0', $agent)){
+  $os['system'] = '1';
+  $os['version'] = '2000';
+ }elseif (eregi('windows nt 5.1', $agent)){
+  $os['system'] = '1';
+  $os['version'] = 'XP';
+ }elseif (eregi('windows nt 5.2', $agent)){
+  $os['system'] = '1';
+  $os['version'] = '2003';
+ }elseif (eregi('winnt', $agent) || eregi('windows nt', $agent)){
+  $os['system'] = '1';
+  $os['version'] = 'NT';
+ }elseif (eregi("mac", $agent)){
+  $os['system'] = '10';
+  if(eregi("PowerPC", $agent)){
+   $os['version'] = 'PowerPC';
+  }elseif(eregi("Macintosh",$agent)){
+   $os['version'] = "Macintosh";
+  }elseif(eregi("OS X",$agent)){
+   $os['version'] = "OS X";
+  }else{
+   $os['version'] = '';
+  }
+ }elseif (eregi("os2", $agent)){
+  $os['system'] = '4';
+  $os['version'] = '';
+ }elseif (eregi("inux", $agent)){
+  $os['system'] = '2'; 
+  $os['version'] = 'i686';
+ }elseif (eregi("freebsd",$agent)){
+  $os['system'] = '9';
+  $os['version'] = '';
+ }else{
+  $os['system'] = '0';
+  $os['version'] = '';
+ }
+ return $os;
+}
+
+?>
+
+<?
+include_once("common/iphone_check.php");	
+$t_r=$_SERVER['HTTP_REFERER'];
+preg_match("/^(http:\/\/)?([^\/]+)/i","$t_r", $matches);
+$host = $matches[2];
+$browser=browser_check();
+//$host=='sejong.korea.ac.kr' || $host=='tiger.korea.ac.kr' ||
+if($browser[0]==1 && $browser[1]=='6.0')
+{
+?>
+<script language='javascript'>
+	location.href="./board/";
+</script>
+<?
+}
+else
+{
+?>
+<script language='javascript'>
+	location.href="http://iuniv.or.kr/index.php";
+</script>
+<?
+}
+?>

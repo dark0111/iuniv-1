@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:element name="cameras">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="camera">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="model_id" type="xsd:string"/>
+							<xsd:element name="model_nm" type="xsd:string"/>
+							<xsd:element name="model_img" type="xsd:string"/>
+							<xsd:element name="company" type="xsd:string"/>
+							<xsd:element name="price" type="xsd:string"/>
+							<xsd:element name="camera_type" type="xsd:string"/>
+							<xsd:element name="sensor">
+								<xsd:complexType>
+									<xsd:simpleContent>
+										<xsd:extension base="xsd:string">
+											<xsd:attribute name="sensor_type" type="sensor_type"/>
+											<xsd:attribute name="pixel" type="xsd:string"/>
+											<xsd:attribute name="size" type="xsd:string"/>
+										</xsd:extension>
+									</xsd:simpleContent>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="lens">
+								<xsd:complexType>
+									<xsd:simpleContent>
+										<xsd:extension base="xsd:string">
+											<xsd:attribute name="mount_type" type="xsd:string"/>
+											<xsd:attribute name="compatibility" type="xsd:string"/>
+										</xsd:extension>
+									</xsd:simpleContent>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="performance">
+								<xsd:complexType>
+									<xsd:simpleContent>
+										<xsd:extension base="xsd:string">
+											<xsd:attribute name="shutter_speed" type="xsd:string"/>
+											<xsd:attribute name="metering" type="xsd:string"/>
+											<xsd:attribute name="live_view" type="xsd:string"/>
+											<xsd:attribute name="continuous_shoting" type="xsd:string"/>
+											<xsd:attribute name="video" type="xsd:string"/>
+										</xsd:extension>
+									</xsd:simpleContent>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="lcd_size" type="xsd:string"/>
+							<xsd:element name="memory_card" type="xsd:string"/>
+							<xsd:element name="weight" type="xsd:string"/>
+							<xsd:element name="size" type="xsd:string"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<!-- 글로벌 데이터 타입 -->
+	<xsd:simpleType name="sensor_type">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="CCD" />
+			<xsd:enumeration value="CMOS" />
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>
+
+
+

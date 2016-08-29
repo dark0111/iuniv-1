@@ -1,0 +1,18 @@
+/* JS-Enabled CSS */
+.widget-head a.collapse  {
+    float: right;
+    display: inline;
+    background: url(img/small_arrow2.png) no-repeat 0 0;
+    width: 7px;
+    height: 7px;
+    text-indent: -9999em;
+    margin: 12px;
+    outline: none;
+}
+
+.collapsed .widget-head a.collapse {background-position: 0 -7px;}
+.collapsed .widget-content {display:none !important;}
+.widget-placeholder { border: 1px dashed #999;}
+#column1 .widget-placeholder { margin: 16px 8px 0 1px; }
+#column2 .widget-placeholder { margin: 16px 8px 0 8px; }
+#column3 .widget-placeholder { margin: 16px 1px 0 8px; }

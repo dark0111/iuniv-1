@@ -1,0 +1,8 @@
+&subLink10=board/bbs/board.php?bo_table=restaurant
+&subLink11=board/bbs/board.php?bo_table=food_story
+&subLink12=
+&subLink13=
+&subLink14=
+&subLink15=
+&subLink16=
+&loadok=ok

@@ -1,0 +1,121 @@
+body, td
+{font-family:굴림; font-size: 9pt; color:#333333;scrollbar-3dlight-color:595959;scrollbar-arrow-color:ffffff;scrollbar-base-color:CFCFCF;scrollbar-darkshadow-color:FFFFFF;scrollbar-face-color:CFCFCF;scrollbar-highlight-color:FFFFF;scrollbar-shadow-color:595959 }
+
+a 
+{font-size:9pt;font-family:굴림; color:#0000cc;text-decoration:underline;}
+
+:hover 
+{font-family:굴림; text-decoration:underline;color:#000099;}
+
+.a_ex 
+{font-size:8pt;font-family:굴림; color:#666666;text-decoration:none;font-weight: none;}
+
+.a_exs 
+{font-size:8pt;font-family:굴림; color:#000000;text-decoration:none;font-weight: bold;}
+
+.login 
+{font-size:9pt;font-family:굴림; color:#929292;text-decoration:none;font-weight: none;}
+
+.index 
+{font-size:9pt;font-family:굴림; color:#5C5C5C;text-decoration:none;font-weight: bold;}
+
+.title 
+{font-size:10pt; font-family:굴림; color:#000000;text-decoration:none;font-weight: bold;}
+
+.product 
+{font-size:9pt;font-family:굴림; color:#666666;text-decoration:none;font-weight: none;}
+
+.page 
+{font-size:10pt; font-family:굴림; color:#000000;text-decoration:none;font-weight: bold;}
+
+.hr_text 
+{font-size:10pt; font-family:굴림; color:#000000;text-decoration:none;font-weight: bold;}
+
+.input_bold 
+{font-weight: bold;}
+
+.sale_price 
+{color:#666666;text-decoration:line-through;font-weight: none;}
+
+.sale_money 
+{color:#669900;text-decoration:none;font-weight: none;}
+
+.price 
+{color:#ff6600;text-decoration:none;font-weight: bold;}
+
+.point 
+{color:#0099cc;text-decoration:none;font-weight: none;}
+
+.normal_page 
+{color:#666666;text-decoration:underline;font-weight: none;}
+
+.page_number 
+{color:#666666;text-decoration:underline;font-weight: bold;}
+
+.page_number:normal
+{color:#000000;text-decoration:underline;font-weight: none;}
+
+.select_page_number
+{color:#ff3300;text-decoration:underline;font-weight: bold;}
+
+.product_title
+{color:#666666;text-decoration:none;font-weight: bold;padding:3 0 0 0;}
+
+.second_product_title
+{font-size:9pt;font-family:굴림;color:#0066cc;text-decoration:none;font-weight: none;}
+
+.cate_name_info
+{font-size:8pt;font-family:굴림;color:#a5a5a5;text-decoration:none;font-weight: none;}
+
+.link_10px
+{font-size:10pt;font-family:굴림;color:#000000;text-decoration:none;font-weight: none;}
+
+.bold_name
+{font-size:10pt; font-family:굴림; color:#000000;text-decoration:none;font-weight: bold;}
+
+.bold_s_name
+{font-size:9pt; font-family:굴림; color:#000000;text-decoration:none;font-weight: bold;}
+
+.email_value
+{font-size:8pt; font-family:굴림; color:#339900;text-decoration:none;font-weight: none;}
+
+.callphone_value
+{font-size:8pt; font-family:굴림; color:#696969;text-decoration:none;font-weight: none;}
+
+.date_value
+{font-size:8pt; font-family:굴림; color:#ff3333;text-decoration:none;font-weight: none;}
+
+.ip_value
+{font-size:8pt; font-family:굴림; color:#3366cc;text-decoration:none;font-weight: none;}
+
+.pg_title
+{color:#666666;text-decoration:none;font-weight: bold;padding:3 0 0 0;}
+
+.outpdt
+{font-size:9pt; color:#ff0000;text-decoration:none;font-weight: none;padding:3 0 0 0;text-decoration:underline;}
+
+
+/* 사용자화면의 스타일 <시작> */
+
+.user_category
+{font-size:10pt;font-family:굴림;color:#0099cc;text-decoration:none;font-weight: bold;}
+
+.user_category_sub
+{font-size:8pt;font-family:돋움;color:#a1a1a1;text-decoration:none;font-weight: none;}
+
+.user_category_value
+{font-size:10pt;font-family:굴림;color:#000000;text-decoration:none;font-weight: bold;}
+
+.user_category_normal_value
+{font-size:9pt;font-family:굴림;color:#000000;text-decoration:none;font-weight: none;}
+
+.user_product_search_value
+{font-size:10pt;font-family:굴림;color:#000000;text-decoration:none;font-weight: bold;}
+
+/* 사용자화면의 스타일 <종료> */
+
+
+.membership
+{font-size:10pt;font-family:굴림;color:#000000;text-decoration:none;font-weight: bold;}
+
+

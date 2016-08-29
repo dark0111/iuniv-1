@@ -1,0 +1,419 @@
+<property name="itp_edit">
+<attach event="ondocumentready" handler="start">
+
+<script>
+var EditMode;
+var HtmlMode;
+var ITP_TOOLS;
+var ITP_IMAGE_VIEW;
+var ITP_EditPlus;
+var ITP_Value;
+var newInputImageName = "itp_array_image[]";
+var newInputImageLocal = "itp_array_localname[]";
+
+function start() {
+
+	if(itp_edit != "true") {
+		return;
+	}
+
+	ITP_EditPlusWidth = 700;
+	ITP_EditPlusHeight = 500;
+
+	editorName = name;
+
+
+	ITP_EditPlus = document.createElement("div");
+	ITP_EditPlus.style.display = "inline";
+
+	this.replaceNode(ITP_EditPlus);
+
+	ITP_TOOLS = document.createElement("div");
+	ITP_TOOLS.addBehavior("#default#download");
+
+	EditMode = document.createElement("div");
+	EditMode.style.position = "relative";
+	EditMode.style.width = ITP_EditPlusWidth;
+	EditMode.style.height = ITP_EditPlusHeight;
+	EditMode.contentEditable = true;
+	EditMode.designMode = "On";
+	EditMode.style.wordBreak ="break-all";
+	EditMode.style.overflow ="scroll";
+	EditMode.style.border = "1px solid #000000";
+	EditMode.onfocus = designFocus;
+	EditMode.onblur = designBlur;
+	EditMode.innerHTML = this.value;
+
+	HtmlMode = document.createElement("<textarea name=\""+editorName+"\">");
+	HtmlMode.style.width = ITP_EditPlusWidth;
+	HtmlMode.style.height = ITP_EditPlusHeight;
+	HtmlMode.style.display = "none";
+	HtmlMode.onblur = manualBlur;
+
+	ITP_IMAGE_VIEW = document.createElement("div");
+	ITP_IMAGE_VIEW.style.width = ITP_EditPlusWidth;
+	ITP_IMAGE_VIEW.style.fontSize = "10pt";
+
+	ITP_EditPlus.insertBefore(ITP_TOOLS);
+	ITP_EditPlus.insertBefore(EditMode);
+	ITP_EditPlus.insertBefore(HtmlMode);
+	ITP_EditPlus.insertBefore(ITP_IMAGE_VIEW);
+	ITP_TOOLS.startDownload("../../../include/web_edit/itp_tool.html",ToolbarLoad);
+}
+
+
+function ToolbarLoad(toolSource) {
+
+	ITP_TOOLS.innerHTML = toolSource;
+
+	if(window.self.document.getElementById("itp_bold")!=null)
+		window.self.document.getElementById("itp_bold").attachEvent("onclick",AccountCheckBold);
+
+	if(window.self.document.getElementById("itp_italic")!=null)
+		window.self.document.getElementById("itp_italic").attachEvent("onclick",AccountCheckItalic);
+
+	if(window.self.document.getElementById("itp_underline")!=null)
+		window.self.document.getElementById("itp_underline").attachEvent("onclick",AccountCheckUnderline);
+
+	if(window.self.document.getElementById("itp_createlink")!=null)
+		window.self.document.getElementById("itp_createlink").attachEvent("onclick",AccountCheckCreateLink);
+		window.self.document.getElementById("itp_manualmode").attachEvent("onclick",manualMode);
+		window.self.document.getElementById("itp_designmode").attachEvent("onclick",designMode);
+
+	if(window.self.document.getElementById("itp_fontname")!=null)
+		window.self.document.getElementById("itp_fontname").attachEvent("onchange",AccountCheckFontName);
+
+	if(window.self.document.getElementById("itp_fontsize")!=null)
+		window.self.document.getElementById("itp_fontsize").attachEvent("onchange",AccountCheckFontSize);
+
+	if(window.self.document.getElementById("itp_justifycenter")!=null)
+		window.self.document.getElementById("itp_justifycenter").attachEvent("onclick",AccountCheckJustifyCenter);
+
+	if(window.self.document.getElementById("itp_justifyright")!=null)
+		window.self.document.getElementById("itp_justifyright").attachEvent("onclick",AccountCheckJustifyRight);
+
+	if(window.self.document.getElementById("itp_justifyleft")!=null)
+		window.self.document.getElementById("itp_justifyleft").attachEvent("onclick",AccountCheckJustifyLeft);
+
+	if(window.self.document.getElementById("itp_fontcolor")!=null)
+		window.self.document.getElementById("itp_fontcolor").attachEvent("onclick",OpenFontColorLoad);
+
+	if(window.self.document.getElementById("itp_backcolor")!=null)
+		window.self.document.getElementById("itp_backcolor").attachEvent("onclick",ResultBackgroundColor);
+
+	if(window.self.document.getElementById("itp_uploadimage")!=null){
+		window.self.document.getElementById("itp_uploadimage").attachEvent("onclick",Image_Insert_Result);
+		ITP_Image_Upload = window.self.document.createElement('<input type="file" id="itp_uploadimage" name="'+newInputImageName+'" style="width:200px; height:18px; border:1px solid #cccccc;">');
+		window.self.document.getElementById("itp_inputimage").replaceNode(ITP_Image_Upload);
+	}
+
+}
+
+function ParData_Load() {
+	if(ITP_Value == "manualMode") {
+		EditMode.innerHTML = HtmlMode.value;
+	} else {
+		HtmlMode.value = EditMode.innerHTML;
+	}
+
+}
+
+function designMode() {
+	ParData_Load();
+	ITP_Value = "designFocus";
+	EditMode.style.display="block";
+	HtmlMode.style.display="none";
+}
+
+function manualMode() {
+	ParData_Load();
+	ITP_Value = "manualMode";
+	EditMode.style.display="none";
+	HtmlMode.style.display="block";
+}
+
+function designFocus() {
+	ITP_Value = "designFocus";
+}
+
+function designBlur() {
+
+	ParData_Load();
+	ITP_Value = "designBlur";
+}
+
+function manualBlur() {
+	ParData_Load();
+}
+
+function Image_Insert_Result() {
+
+	EditMode.focus();
+	ITP_Image_Upload = window.self.document.getElementById("itp_uploadimage");
+	Length = window.self.document.getElementsByName(newInputImageLocal).length;
+
+	for(i=0;i<Length;i++) {
+
+		if(window.self.document.getElementsByName(newInputImageLocal)[i].value==ITP_Image_Upload.value) {
+			return true;
+		}
+	}
+
+	if(ITP_Image_Upload.value.length==0){
+		return true;
+	}
+
+	Temp_textImage = window.self.document.createElement("img");
+	Temp_textImage.onload = Result_Insert_Image_Next;
+	Temp_textImage.onerror = Image_Insert_Result_Error;
+	Temp_textImage.src = ITP_Image_Upload.value;
+
+}
+
+function Image_Insert_Result_Error() {
+
+	ITP_Image_Upload = window.self.document.getElementById("itp_uploadimage");
+	ITP_CheckNEW = ITP_Image_Upload.cloneNode();
+	ITP_Image_Upload.replaceNode(ITP_CheckNEW);
+
+}
+
+function Result_Insert_Image_Next() {
+
+	ITP_Image_Upload = window.self.document.getElementById("itp_uploadimage");
+	ITP_CheckNEW = ITP_Image_Upload.cloneNode();
+	ITP_Image_Upload.replaceNode(ITP_CheckNEW);
+	ITP_Image_Upload.style.display="none";
+	ITP_Image_Upload.id ="";
+	ITP_EditPlus.insertBefore(ITP_Image_Upload);
+	ITP_Hidden = window.self.document.createElement('<input type="hidden" name="'+newInputImageLocal+'">');
+	ITP_Hidden.value = ITP_Image_Upload.value;
+	ITP_EditPlus.insertBefore(ITP_Hidden);
+	window.self.document.execCommand("InsertImage",false,ITP_Image_Upload.value);
+
+}
+
+
+function SelectColorPicker() {
+
+	ColorTable = window.self.document.createElement("<table id='colortable'>");
+	ColorTable.border = 1;
+	ColorTable.borderColor = "#000000";
+	ColorTable.style.borderCollapse = "collapse";
+	ColorTable.cellPadding = 0;
+	ColorTable.cellSpacing = 0;
+	ColorTable.style.display="none";
+	cellWidth = 15;
+	upLength = 51;
+	if(255%upLength) {
+		alert("값이 잘못되었습니다.  ");
+		return true;
+	}
+
+	for(rCode=0;rCode<256;rCode+=upLength) {
+		ITP_TR = ColorTable.insertRow();
+		rString = rCode.toString(16);
+		if(rString.length==1) {
+			rString = "0"+rString;
+		}
+		
+		for(gCode=0;gCode<256;gCode+=upLength) {
+			gString = gCode.toString(16);
+
+			if(gString.length==1) {
+				gString = "0"+gString;
+			}
+
+			for(bCode=0;bCode<256;bCode+=upLength) {
+				bString = bCode.toString(16);
+				if(bString.length==1) {
+					bString = "0"+bString;
+				}
+				colorCode = "#"+rString+gString+bString;
+				ColorTd = ITP_TR.insertCell();
+				ColorTd.style.backgroundColor=colorCode;
+				ColorTd.width=cellWidth;
+				ColorTd.height=cellWidth;
+				ColorTd.name = "colorcell";
+				ColorTd.onmouseover = "this.style.cursor='hand';";
+
+				ColorTd.onclick="window.close()";
+
+			}
+		}
+	}
+
+	ColorPdiv = window.self.document.createElement("<div id='preview'>");
+	ColorPdiv.style.width=100;
+	ColorPdiv.style.height=20;
+	ColorPdiv.style.textAlign = "center";
+	ColorPdiv.style.border = "1px solid #000000";
+
+	wWidth = ((255/upLength+1)*(255/upLength+1)*cellWidth);
+	wHeight = ((255/upLength+1)*cellWidth);
+
+	wCreateColor = window.open("about:blank","_blank","top=50, left=50, width="+wWidth+"px,height="+wHeight+"px");
+	wCreateColor.document.open("text/html");
+	wCreateColor.document.write("<html>\n");
+	wCreateColor.document.write("<head>\n");
+	wCreateColor.document.write("<title>색상을 선택하세요</title>\n");
+	wCreateColor.document.write("</head>\n");
+	wCreateColor.document.write("<body bgcolor=\"#ffffff\" topmargin=\"0\" leftmargin=\"0\" rightmargin=\"0\" bottommargin=\"0\" marginwidth=\"0\" marginheight=\"0\" >\n");
+	wCreateColor.document.write(ColorTable.outerHTML);
+	wCreateColor.document.write("</body>\n");
+	wCreateColor.document.write("</html>\n");
+
+	wCreateColor.document.close();
+	return wCreateColor;
+
+}
+
+function ResultBackgroundColor() {
+	if(ITP_Value!="designFocus") {
+		return true;
+	}
+	ITP_DCODE = window.self.document.selection.createRange();
+	OpenWindow = SelectColorPicker();
+	ITP_TD = OpenWindow.document.getElementsByTagName("TD");
+	tLength = ITP_TD.length;
+
+	for(i=0;i<tLength;i++) {
+		tColor = ITP_TD[i].style.backgroundColor;
+		ITP_TD[i].attachEvent("onclick",new Function("AccountCheckBackColor(ITP_DCODE,'"+tColor+"');"));
+	}
+	OpenWindow.document.getElementById("colortable").style.display="block";
+
+}
+
+function OpenFontColorLoad() {
+	if(ITP_Value!="designFocus") {
+		return true;
+	}
+
+	ITP_DCODE = window.self.document.selection.createRange();
+	OpenWindow = SelectColorPicker();
+	ITP_TD = OpenWindow.document.getElementsByTagName("TD");
+	tLength = ITP_TD.length;
+
+	for(i=0;i<tLength;i++) {
+		CheckColor = ITP_TD[i].style.backgroundColor;
+		ITP_TD[i].attachEvent("onclick",new Function("ResultFontColor(ITP_DCODE,'"+CheckColor+"');"));
+	}
+
+	OpenWindow.document.getElementById("colortable").style.display="block";
+
+}
+
+function ResultFontColor(ITP_DCODE,color) {
+	if(ITP_DCODE.text) {
+		window.self.document.execCommand("ForeColor",false,color);
+	} else if(ITP_DCODE.length) {
+		Load_Length = ITP_DCODE.length;
+		for(i=0;i<Load_Length;i++) {
+			ITP_DCODE.item(i).style.color=color;
+		}
+	} else if(ITP_DCODE.parentElement()==EditMode) {
+		EditMode.innerHTML = '<font style="color:'+color+'">'+EditMode.innerHTML+'</font>';
+	} else {
+		ITP_DCODE.parentElement().style.color=color;
+	}
+}
+
+function AccountCheckBackColor(ITP_DCODE,color) {
+	if(ITP_DCODE.text) {
+		window.self.document.execCommand("BackColor",false,color);
+	} else if(ITP_DCODE.length) {
+		Load_Length = ITP_DCODE.length;
+		for(i=0;i<Load_Length;i++)
+		{
+			ITP_DCODE.item(i).style.backgroundColor=color;
+		}
+	} else if(ITP_DCODE.parentElement()!=EditMode) {
+		ITP_DCODE.parentElement().style.backgroundColor=color;
+	}
+}
+
+function AccountCheckFontName() {
+	EditMode.focus();
+	SelectedEdt = event.srcElement;
+	fontName = SelectedEdt.options[SelectedEdt.selectedIndex].value;
+	window.self.document.execCommand("FontName",false,fontName);
+}
+
+function AccountCheckFontSize() {
+	EditMode.focus();
+	SelectedEdt = event.srcElement;
+	fontSize =  SelectedEdt.options[SelectedEdt.selectedIndex].value;
+	window.self.document.execCommand("FontSize",false,fontSize);
+}
+
+function AccountCheckJustifyCenter() {
+	if(ITP_Value != "designFocus") {
+		return true;
+	}
+
+	window.self.document.execCommand("JustifyCenter",false);
+}
+
+function AccountCheckJustifyLeft() {
+	if(ITP_Value != "designFocus") {
+		return true;
+	}
+
+	window.self.document.execCommand("JustifyLeft",false);
+}
+
+function AccountCheckJustifyRight() {
+	if(ITP_Value != "designFocus") {
+		return true;
+	}
+
+	window.self.document.execCommand("JustifyRight",false);
+}
+
+function AccountCheckBold() {
+
+	if(ITP_Value != "designFocus") {
+		return true;
+	}
+	window.self.document.execCommand("Bold");
+
+}
+
+function AccountCheckItalic() {
+	if(ITP_Value == "designFocus") {
+		window.self.document.execCommand("italic");
+	}
+}
+
+function AccountCheckUnderline() {
+	if(ITP_Value == "designFocus") {
+		window.self.document.execCommand("underline");
+	}
+}
+
+function popBoxColor() {
+	OpenWindow = SelectColorPicker();
+	ITP_TD = OpenWindow.document.getElementsByTagName("TD");
+	tLength = ITP_TD.length;
+
+	for(i=0;i<tLength;i++) {
+		CheckColor = ITP_TD[i].style.backgroundColor;
+		ITP_TD[i].attachEvent("onclick",new Function("AccountCheckBoxBorderColor('"+CheckColor+"');"));
+	}
+
+	OpenWindow.document.getElementById("colortable").style.display="block";
+}
+
+function AccountCheckBoxBorderColor(color) {
+
+	if(wCreateTextBox.closed) {
+		return true;
+	}
+
+	wCreateTextBox.create.bordercolor.value = color;
+
+}
+
+</script>
+

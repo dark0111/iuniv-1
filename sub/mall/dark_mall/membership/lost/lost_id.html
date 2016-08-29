@@ -1,0 +1,265 @@
+<?
+session_start();
+IF(!$HTTP_SESSION_VARS[ON_ID] AND !$HTTP_SESSION_VARS[ON_NAME] AND !$HTTP_SESSION_VARS[ON_EMAIL]) {
+include "../../include/dbcon.php";
+$CATEVALUE = "<a href=\"/\" class='user_category_value'>홈</a> ";
+$CATEVALUE .= "> <a href=\"./lost.html\" class='user_category_value'>로그인정보 분실</a> > 아이디 찾기";
+
+if(!strcmp($r,"result")) {
+	$RowsViewCheck = "select count(no) as no from $memberSQL where name='".base64_decode($m)."' and jumin='".base64_decode($n)."'";
+	$RowsViewCheckSQL = mysql_query($RowsViewCheck, $connection) or die("RowsViewCheck error");
+	$RowsViewCheckFetch = mysql_fetch_array($RowsViewCheckSQL);
+
+	$RowsView = "select id from $memberSQL where name='".base64_decode($m)."' and jumin='".base64_decode($n)."'";
+	$RowsViewSQL = mysql_query($RowsView, $connection) or die("RowsViewCheck error");
+	$RowsViewFetch = mysql_fetch_array($RowsViewSQL);
+
+} else {
+	$RowsViewCheckFetch[0] = "0";
+}
+
+if(!strcmp($RowsViewCheckFetch[0],"1")) {
+?>
+
+	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+	<html>
+	<head>
+		<title>아이디를 찾았습니다</title>
+		<link rel="STYLESHEET" type="text/css" href="../../style/style.css">
+	</head>
+	
+	<body>
+	<?
+	include "../../template/head.php";
+	?>
+	<table border=0 cellpadding=0 cellspacing=0 width=900 align=center>
+	<tr>
+	<td bgcolor="#ffffff">
+	
+		<table broder=0 cellpadding=0 cellspacing=0 width=100%>
+		<tr>
+		<td bgcolor="#ffffff" class="user_category_value"><?=$CATEVALUE;?></td>
+		</tr>
+	
+		<tr><td height=5 bgcolor="#ffffff"></td></tr>
+		<tr><td height=1 bgcolor="#eeeeee"></td></tr>
+		<tr><td height=5 bgcolor="#ffffff"></td></tr>
+	
+		<tr>
+		<td bgcolor="#ffffff" width="900" align=center>
+	
+			<!-- 아이디 찾기의 <시작> -->
+			<table border=0 cellpadding=0 cellspacing=0 width="370" height="190">
+			<tr>
+			<td background="../../image/lost/image4.gif" align=center valign=top>
+	
+				<table border=0 cellpadding=0 cellspacing=0 width=340>
+				<tr><td height=50></td></tr>
+				<tr><td colspan=2 height=1 bgcolor="#eeeeee"></td></tr>
+	
+				<tr><td colspan=2 height=55 bgcolor="#ffffff" align=center>
+				<strong><?=base64_decode($m)?></strong>님의 아이디는 <strong><?=$RowsViewFetch[id]?></strong> 입니다
+				</td></tr>
+				<tr><td colspan=2 bgcolor="#ffffff" align=center>
+				<a href="./lost_pw.html"><img src="../../image/lost/bt2.gif" width="96" height="21" border="0"></a>
+				<a href="/source/signin/Signin.html"><img src="../../image/lost/bt3.gif" width="96" height="21" border="0"></a>
+				</td></tr>
+
+				<tr><td colspan=2 height=20 bgcolor="#ffffff" align=center></td></tr>
+
+				<tr><td colspan=2 height=1 bgcolor="#eeeeee"></td></tr>
+
+	
+				</table>
+			</td>
+			</tr>
+			</table>
+			<!-- 아이디 찾기의 <종료> -->
+	
+		</td></tr>	
+		</table>
+		
+	</td></tr>
+	</table>	
+	
+	<?
+	include "../../template/footer.php";
+	?>
+	</body>
+	</html>
+
+<?
+} else {
+?>
+
+	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+	<html>
+	<head>
+		<title>아이디 찾기</title>
+		<link rel="STYLESHEET" type="text/css" href="../../style/style.css">
+		<script language="javascript">
+		
+		<?
+		if($r) {
+		?>
+		
+		alert("작성하신 정보가 올바르지 않습니다.       \n\n다시확인하시기 바랍니다.     ");
+		
+		<?
+		}
+		?>
+		
+		
+		function IDForm() {
+			if(!LostForm.name.value) {
+			alert("이름을 입력하여 주십시오.             ");
+			LostForm.name.focus();
+			return false;
+			}
+	
+			if(!LostForm.jumin1.value) {
+			alert("주민등록번호를 입력하여 주십시오.             ");
+			LostForm.jumin1.focus();
+			return false;
+			}
+	
+			if(!LostForm.jumin2.value) {
+			alert("주민등록번호를 입력하여 주십시오.             ");
+			LostForm.jumin2.focus();
+			return false;
+			}
+
+	
+			str1=LostForm.jumin1.value
+			str2=LostForm.jumin2.value
+			a1 = parseInt(str1.charAt(0))*2
+			a2 = parseInt(str1.charAt(1))*3
+			a3 = parseInt(str1.charAt(2))*4
+			a4 = parseInt(str1.charAt(3))*5
+			a5 = parseInt(str1.charAt(4))*6
+			a6 = parseInt(str1.charAt(5))*7
+			a7 = parseInt(str2.charAt(0))*8
+			a8 = parseInt(str2.charAt(1))*9
+			a9 = parseInt(str2.charAt(2))*2
+			a10 = parseInt(str2.charAt(3))*3
+			a11 = parseInt(str2.charAt(4))*4
+			a12 = parseInt(str2.charAt(5))*5
+			tot=a1+a2+a3+a4+a5+a6+a7+a8+a9+a10+a11+a12
+			
+			na=tot%11
+			ch=11-na
+			
+			if(ch==10)ch=0
+			if(ch==11)ch=1
+			
+			if(ch==parseInt(str2.charAt(6))) {} else {
+				alert('주민번호가 잘못되었습니다.       ');
+				LostForm.jumin1.focus();
+				return false;
+			}
+	
+			
+			LostForm.target = "result";
+			LostForm.action = "_result.php";
+	
+		}
+	
+		function Num(field) {
+			var valid = "1234567890";
+			var ok = "yes";
+			var temp;
+			for (var i=0; i<field.value.length; i++) {
+				temp = "" + field.value.substring(i, i+1);
+				if (valid.indexOf(temp) == "-1") ok = "no";
+			}
+			if (ok == "no") {
+				alert("숫자만이 입력이 가능합니다.        ");
+				field.focus();
+				field.select();
+			}
+		}
+		</script>
+	</head>
+	
+	<body>
+	<?
+	include "../../template/head.php";
+	?>
+	<table border=0 cellpadding=0 cellspacing=0 width=900 align=center>
+	<tr>
+	<td bgcolor="#ffffff">
+	
+		<table broder=0 cellpadding=0 cellspacing=0 width=100%>
+		<tr>
+		<td bgcolor="#ffffff" class="user_category_value"><?=$CATEVALUE;?></td>
+		</tr>
+	
+		<tr><td height=5 bgcolor="#ffffff"></td></tr>
+		<tr><td height=1 bgcolor="#eeeeee"></td></tr>
+		<tr><td height=5 bgcolor="#ffffff"></td></tr>
+	
+		<tr>
+		<td bgcolor="#ffffff" width="900" align=center>
+	
+			<!-- 아이디 찾기의 <시작> -->
+			<table border=0 cellpadding=0 cellspacing=0 width="370" height="190">
+			<tr>
+			<td background="../../image/lost/image2.gif" align=center valign=top>
+	
+				<table border=0 cellpadding=0 cellspacing=0 width=340>
+				<tr><td height=50></td></tr>
+				<tr><td colspan=2 height=1 bgcolor="#eeeeee"></td></tr>
+				<form name="LostForm" methos="post" onsubmit="return IDForm()">
+				<input type="hidden" name="result" value="lost_id">
+				<tr>
+				<td width=100 align=center style="padding:13 0 10 0">이 름</td>
+				<td width=240><input type="text" name="name" size=27></td>
+				</tr>
+				<tr><td colspan=2 height=1 bgcolor="#eeeeee"></td></tr>
+	
+				<tr>
+				<td width=100 align=center style="padding:13 0 10 0">주민등록번호</td>
+				<td width=240><input type="text" name="jumin1" size="12" maxlength="6" onblur="Num(this)"> - <input type="text" name="jumin2" size="12" maxlength="7" onblur="Num(this)"></td>
+				</tr>
+	
+				<tr><td colspan=2 height=1 bgcolor="#eeeeee"></td></tr>
+	
+				<tr>
+				<td width=100 align=center></td>
+				<td width=240 style="padding:13 0 10 0"><input type="image" src="../../image/lost/bt1.gif" width="96" height="21"></td>
+				</tr>
+				</form>
+	
+				</table>
+				<iframe name="result" frameborder="0" marginwidth="0" marginheight="0" width="0" height="0"></iframe>
+			</td>
+			</tr>
+			</table>
+			<!-- 아이디 찾기의 <종료> -->
+	
+		</td></tr>	
+		</table>
+		
+	</td></tr>
+	</table>	
+	
+	<?
+	include "../../template/footer.php";
+	?>
+	</body>
+	</html>
+
+<?
+}
+?>
+
+<?
+} ELSE {
+?>
+<script language="javascript">
+parent.location.href="/";
+</script>
+<?
+}
+mysql_close($connection);
+?>

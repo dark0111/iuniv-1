@@ -1,0 +1,1 @@
+<img src='<?=$IU['path']?>/sub/intro/image/iuniv_intro.gif' border="0"><Br><Br>
